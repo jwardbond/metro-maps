@@ -1,0 +1,33 @@
+{
+  "nodes": [
+    {
+      "id": "900000009102",
+      "label": "U Leopoldplatz",
+      "metadata": { "x": 537.109, "y": 673.804 }
+    },
+    {
+      "id": "900000009201",
+      "label": "U Leinestr.",
+      "metadata": { "x": 537.301, "y": 673.4680000000001 }
+    }
+  ],
+  "edges": [
+    {
+      "source": "900000009102",
+      "target": "900000009201",
+      "relation": "subway",
+      "metadata": { "time": 90, "lines": ["U9"] }
+    }
+  ],
+  "lines": [
+    { "id": "U8", "color": "#0a3c85", "group": null },
+    { "id": "U1", "color": "#55a822", "group": null },
+    { "id": "U3", "color": "#019377", "group": null },
+    { "id": "U2", "color": "#ff3300", "group": null },
+    { "id": "U4", "color": "#ffd900", "group": null },
+    { "id": "U5", "color": "#672f17", "group": null },
+    { "id": "U6", "color": "#6f4e9c", "group": null },
+    { "id": "U7", "color": "#3690c0", "group": null },
+    { "id": "U9", "color": "#ff7300", "group": null }
+  ]
+}
