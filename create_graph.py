@@ -37,7 +37,7 @@ class Graph:
 
         :param sections: a list of section numbers, starting from 0. Sections are assumed to go counterclockwise from 3:00 [0,1,2...]
         '''
-        sections = [1,2,3,4,5,6,7]
+        sections = [0,1,2,3,4,5,6,7]
         nodes = self.nodes
         edges = self.edges
         num_sections = len(sections)
@@ -60,8 +60,8 @@ class Graph:
 
             #determine feasible sections for a given angle
             section = round((a / (2*math.pi)) * num_sections)
-            next_section = sections[section+1]
-            prev_section = sections[section-1]
+            next_section = sections[(section+1)%len(sections)]
+            prev_section = sections[(section-1)%len(sections)]
             edge.source_directions = [prev_section, section, next_section]
             edge.target_directions = list(map(get_opposite_section, edge.source_directions))
 
