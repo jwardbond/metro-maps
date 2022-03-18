@@ -83,3 +83,6 @@ __pycache__
 
 #output files
 *.svg
+
+#jupyter notebooks
+prototypes/
