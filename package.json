@@ -1,5 +1,30 @@
 {
+  "name": "metro-maps",
+  "description": "Use mixed integer programming to generate optimized metro-map layouts.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwardbond/metro-maps.git"
+  },
+  "keywords": [
+    "MIP",
+    "mixed-integer",
+    "programming",
+    "transit",
+    "metro",
+    "maps"
+  ],
+  "author": "Jesse Ward-Bond",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jwardbond/metro-maps/issues"
+  },
+  "homepage": "https://github.com/jwardbond/metro-maps#readme",
   "dependencies": {
     "svg-transit-map": "^0.1.0"
+  }, 
+  "scripts": {
+    "generate_test_graph": "powershell cat graphs/test.input.json | npx svg-transit-map -y > test.svg"
   }
 }
