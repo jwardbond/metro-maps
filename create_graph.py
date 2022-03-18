@@ -31,12 +31,13 @@ class Graph:
         self.nodes = {node['id']: Node(node) for node in x['nodes']}
         self.edges = {i: Edge(edge) for i, edge in enumerate(x['edges'])}
 
-    def calc_sections(self, sections=[0,1,2,3,4,5,6,7]):
+    def calc_sections(self):
         '''
         Determines the "sections" of all edges in the graph. 
 
         :param sections: a list of section numbers, starting from 0. Sections are assumed to go counterclockwise from 3:00 [0,1,2...]
         '''
+        sections = [1,2,3,4,5,6,7]
         nodes = self.nodes
         edges = self.edges
         num_sections = len(sections)
