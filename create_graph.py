@@ -54,8 +54,6 @@ class Graph:
             vector.x = target_node.x - source_node.x
             vector.y = target_node.y - source_node.y
             a = get_angle(vector)
-            print(a)
-            print(vector)
             del vector
 
             #determine feasible sections for a given angle
