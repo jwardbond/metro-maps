@@ -9,6 +9,7 @@ class Node:
         self.label = node_as_dict['label']
         self.x = node_as_dict['metadata']['x']
         self.y = node_as_dict['metadata']['y']
+        self.degree = 0
 
 class Edge:
     def __init__(self, edge_as_dict):
@@ -30,6 +31,11 @@ class Graph:
         #create dictionaries of node and edge OBJECTS from the JSON
         self.nodes = {node['id']: Node(node) for node in x['nodes']}
         self.edges = {i: Edge(edge) for i, edge in enumerate(x['edges'])}
+
+        for node_id, node in self.nodes.items():
+            for edge_id, edge in self.edges.items():
+                if edge.source == node_id or edge.target == node_id:
+                    node.degree += 1
 
     def calc_sections(self):
         '''
@@ -62,12 +68,17 @@ class Graph:
             prev_section = sections[(section-1)%len(sections)]
             edge.source_directions = [prev_section, section, next_section]
             edge.target_directions = list(map(get_opposite_section, edge.source_directions))
+        
 
 if __name__ == '__main__':
 
     #test code
     graph = Graph('./graphs/test.input.json')
     graph.calc_sections()
+    for node in graph.nodes.values():
+        print(node.id)
+        print(node.degree)
+
     for edge in graph.edges.values():
         print(edge.source_directions)
         print(edge.target_directions, '\n')
