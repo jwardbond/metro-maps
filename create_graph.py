@@ -13,9 +13,9 @@ class Node:
         self.neighbours = []
 
 class Edge:
-    def __init__(self, edge_as_dict, rev=False):
+    def __init__(self, edge_as_dict, reverse=False):
         
-        if rev == True:
+        if reverse:
             self.source = edge_as_dict['target']
             self.target = edge_as_dict['source']
             self.relation = edge_as_dict['relation']
@@ -37,12 +37,13 @@ class Graph:
         with open(JSON_graph_path) as f:
             x = json.load(f)
         
-        #create dictionaries of node and edge OBJECTS from the JSON
         self.nodes = {node['id']: Node(node) for node in x['nodes']}
-        self.fwd_edges = {i: Edge(edge) for i, edge in enumerate(x['edges'])}
+        self.fwd_edges = {i: Edge(edge) for i, edge in enumerate(x['edges'])} #edges as they are given in JSON
 
         self.__find_neighbours()
-        self.rev_edges = {i: Edge(edge, rev=True) for i, edge in enumerate(x['edges'])}
+
+        self.rev_edges = {i: Edge(edge, reverse=True) for i, edge in enumerate(x['edges'])} #
+        
         self.__calc_sections()
 
     def __find_neighbours(self):
