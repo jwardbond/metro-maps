@@ -45,23 +45,42 @@ def add_octolinear_constrs(model, graph):
     for edge_id, edge in graph.edges.items():
         source = edge.source
         target = edge.target
-        for section in edge.source_directions:
+        for i, section in enumerate(edge.source_directions):
             if section == 0:
-                model.addConstr(y[source]-y[target] <= bigM*(1-alphas[edge_id,
-                                section]), name='edge{}-sec{}-1'.format(edge_id, section))
-                model.addConstr(-y[source]+y[target] <= bigM*(1-alphas[edge_id,
-                                section]), name='edge{}-sec{}-2'.format(edge_id, section))
-                model.addConstr(-x[source]+x[target] <= -1*bigM*(1-alphas[edge_id, section]) +
-                                min_length, name='edge{}-sec{}-1'.format(edge_id, section))
-
-            # elif section == 1:
-            # elif section == 2:
-            # elif section == 3:
-            # elif section == 4:
-            # elif section == 5:
-            # elif section == 6:
-            # elif section == 1:
-
+                model.addConstr(y[source] - y[target] <= bigM*(1-alphas[edge_id,
+                                i]), name='edge{}-sec{}-1'.format(edge_id, section))
+                model.addConstr(-y[source] + y[target] <= bigM*(1-alphas[edge_id,
+                                i]), name='edge{}-sec{}-2'.format(edge_id, section))
+                model.addConstr(-x[source] + x[target] >= -1*bigM*(1-alphas[edge_id, i]) +
+                                min_length, name='edge{}-sec{}-3'.format(edge_id, section))
+            elif section == 1:
+                model.addConstr(z2[source] - z2[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-1'.format(edge_id, section))
+                model.addConstr(-z2[source] + z2[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-2'.format(edge_id, section))
+                model.addConstr(-z1[source] + z1[target] >= -1*bigM*(1-alphas[edge_id, i]) + min_length, name='edge{}-sec{}-3'.format(edge_id, section))
+            elif section == 2:
+                model.addConstr(x[source] - x[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-1'.format(edge_id, section))
+                model.addConstr(-x[source] + x[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-2'.format(edge_id, section))
+                model.addConstr(-y[source] + y[target] >= -1*bigM*(1-alphas[edge_id, i]) + min_length, name='edge{}-sec{}-3'.format(edge_id, section))
+            elif section == 3:
+                model.addConstr(z1[source] - z1[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-1'.format(edge_id, section))
+                model.addConstr(-z1[source] + z1[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-2'.format(edge_id, section))
+                model.addConstr(z2[source] - z2[target] >= -1*bigM*(1-alphas[edge_id, i]) + min_length, name='edge{}-sec{}-3'.format(edge_id, section))
+            elif section == 4:
+                model.addConstr(y[source] - y[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-1'.format(edge_id, section))
+                model.addConstr(-y[source] + y[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-2'.format(edge_id, section))
+                model.addConstr(x[source] - x[target] >= -1*bigM*(1-alphas[edge_id, i]) + min_length, name='edge{}-sec{}-3'.format(edge_id, section))
+            elif section == 5:
+                model.addConstr(z2[source] - z2[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-1'.format(edge_id, section))
+                model.addConstr(-z2[source] + z2[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-2'.format(edge_id, section))
+                model.addConstr(z1[source] - z1[target] >= -1*bigM*(1-alphas[edge_id, i]) + min_length, name='edge{}-sec{}-3'.format(edge_id, section))
+            elif section == 6:
+                model.addConstr(x[source] - x[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-1'.format(edge_id, section))
+                model.addConstr(-x[source] + x[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-2'.format(edge_id, section))
+                model.addConstr(y[source] - y[target] >= -1*bigM*(1-alphas[edge_id, i]) + min_length, name='edge{}-sec{}-3'.format(edge_id, section))
+            elif section == 7:
+                model.addConstr(z1[source] - z1[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-1'.format(edge_id, section))
+                model.addConstr(-z1[source] + z1[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-2'.format(edge_id, section))
+                model.addConstr(-z2[source] + z2[target] >= -1*bigM*(1-alphas[edge_id, i]) + min_length, name='edge{}-sec{}-3'.format(edge_id, section))
 
 if __name__ == '__main__':
     graph = Graph('./graphs/test.input.json')
