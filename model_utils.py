@@ -8,7 +8,7 @@ from create_graph import Graph
 
 
 def add_octolinear_constrs(model, graph):
-    
+
     '''
     Constrains sections to octolinearity
 
@@ -81,11 +81,21 @@ def add_octolinear_constrs(model, graph):
                 model.addConstr(-z2[source] + z2[target] >= -1*bigM*(1-alphas[edge_id, i]) + min_length, name='edge{}-sec{}-3'.format(edge_id, section))
 
 def add_ordering_constrs(model, graph):
-    pass
+    '''
+    Conserves counterclockwise ordering around all nodes
+
+    :params model: a gurobi model
+    :params graph: a Graph object   
+    '''
+
+    betas = {}
+    for node_id, node in graph.nodes:
+        if node.degree >= 2:
+            betas[node_id] = model.addVars(node.degree, lb=0, ub=1, vtype=GRB.BINARY, name='beta_{}_'.format(node_id))
+
 
 if __name__ == '__main__':
     graph = Graph('./graphs/test.input.json')
-    graph.calc_sections()
 
     m = gp.Model('METRO_MAPS')
     m.modelSense = GRB.MINIMIZE

@@ -22,9 +22,6 @@ def main(graph_path):
     except:
         print('Path' + graph_path + 'not found')
         sys.exit(1)
-    
-    # sections = [0,1,2,3,4,5,6,7]
-    graph.calc_sections()
 
 #****************************************
 #Model Setup

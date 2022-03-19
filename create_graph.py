@@ -10,7 +10,7 @@ class Node:
         self.x = node_as_dict['metadata']['x']
         self.y = node_as_dict['metadata']['y']
         self.degree = 0
-        self.incident_edges = []
+        self.neighbours = []
 
 class Edge:
     def __init__(self, edge_as_dict):
@@ -33,13 +33,20 @@ class Graph:
         self.nodes = {node['id']: Node(node) for node in x['nodes']}
         self.edges = {i: Edge(edge) for i, edge in enumerate(x['edges'])}
 
+        self.__calc_sections()
+        self.__find_neighbours()
+
+    def __find_neighbours(self):
         for node_id, node in self.nodes.items():
             for edge_id, edge in self.edges.items():
-                if edge.source == node_id or edge.target == node_id:
-                    node.incident_edges.append(edge_id)
+                if edge.source == node_id:
+                    node.neighbours.append(edge.target)
+                    node.degree += 1
+                elif edge.target == node_id:
+                    node.neighbours.append(edge.source)
                     node.degree += 1
 
-    def calc_sections(self):
+    def __calc_sections(self):
         '''
         Determines the "sections" of all edges in the graph. 
 
@@ -76,11 +83,11 @@ if __name__ == '__main__':
 
     #test code
     graph = Graph('./graphs/test.input.json')
-    graph.calc_sections()
     for node in graph.nodes.values():
         print(node.id)
         print(node.degree)
+        print(node.neighbours, '\n')
 
-    for edge in graph.edges.values():
-        print(edge.source_directions)
-        print(edge.target_directions, '\n')
+    # for edge in graph.edges.values():
+    #     print(edge.source_directions)
+    #     print(edge.target_directions, '\n')
