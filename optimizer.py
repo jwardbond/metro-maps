@@ -46,9 +46,12 @@ def main(graph_path):
     m.addConstrs((z1[node] == (x[node]+y[node])/2 for node in node_id_list), 'z1_coord')
     m.addConstrs((z2[node] == (x[node]-y[node])/2 for node in node_id_list), 'z2_coord')
 
-    #Get feasible sectors for all edges
+    
     model_utils.add_octolinear_constrs(m, graph)
+    model_utils.add_ordering_constrs(m, graph)
+
     m.write('output.lp')
+    m.optimize()
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

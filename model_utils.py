@@ -8,6 +8,7 @@ from create_graph import Graph
 
 
 def add_octolinear_constrs(model, graph):
+    
     '''
     Constrains sections to octolinearity
 
@@ -26,7 +27,7 @@ def add_octolinear_constrs(model, graph):
     model._alphas = alphas
 
     # add edge direction variables
-    dirs = model.addVars(len(graph.edges), lb=0, ub=1,
+    dirs = model.addVars(len(graph.edges), lb=0,
                          vtype=GRB.INTEGER, name="dir")  # FIXME do I need to add other vars for other direction?
     model._dirs = dirs
 
@@ -35,7 +36,7 @@ def add_octolinear_constrs(model, graph):
         num_feas_dirs)) == 1 for e in graph.edges), 'octolinear_disjunct_binaries')
 
     model.addConstrs((gp.quicksum(graph.edges[e].source_directions[j] * alphas[e, j]
-                     for j in range(num_feas_dirs)) == 1 for e in graph.edges), "octolinear_disjunct")  # FIXME currently alphas can be 0, which might mess with this
+                     for j in range(num_feas_dirs)) == dirs[e] for e in graph.edges), "octolinear_disjunct")  # FIXME currently alphas can be 0, which might mess with this
 
     x = model._x
     y = model._y
@@ -47,12 +48,9 @@ def add_octolinear_constrs(model, graph):
         target = edge.target
         for i, section in enumerate(edge.source_directions):
             if section == 0:
-                model.addConstr(y[source] - y[target] <= bigM*(1-alphas[edge_id,
-                                i]), name='edge{}-sec{}-1'.format(edge_id, section))
-                model.addConstr(-y[source] + y[target] <= bigM*(1-alphas[edge_id,
-                                i]), name='edge{}-sec{}-2'.format(edge_id, section))
-                model.addConstr(-x[source] + x[target] >= -1*bigM*(1-alphas[edge_id, i]) +
-                                min_length, name='edge{}-sec{}-3'.format(edge_id, section))
+                model.addConstr(y[source] - y[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-1'.format(edge_id, section))
+                model.addConstr(-y[source] + y[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-2'.format(edge_id, section))
+                model.addConstr(-x[source] + x[target] >= -1*bigM*(1-alphas[edge_id, i]) + min_length, name='edge{}-sec{}-3'.format(edge_id, section))
             elif section == 1:
                 model.addConstr(z2[source] - z2[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-1'.format(edge_id, section))
                 model.addConstr(-z2[source] + z2[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-2'.format(edge_id, section))
@@ -81,6 +79,9 @@ def add_octolinear_constrs(model, graph):
                 model.addConstr(z1[source] - z1[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-1'.format(edge_id, section))
                 model.addConstr(-z1[source] + z1[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-2'.format(edge_id, section))
                 model.addConstr(-z2[source] + z2[target] >= -1*bigM*(1-alphas[edge_id, i]) + min_length, name='edge{}-sec{}-3'.format(edge_id, section))
+
+def add_ordering_constrs(model, graph):
+    pass
 
 if __name__ == '__main__':
     graph = Graph('./graphs/test.input.json')
