@@ -45,7 +45,7 @@ def main(graph_path):
 
     
     model_utils.add_octolinear_constrs(m, graph)
-    model_utils.add_ordering_constrs(m, graph)
+    # model_utils.add_ordering_constrs(m, graph)
 
     m.write('output.lp')
     m.optimize()
