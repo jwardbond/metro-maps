@@ -19,7 +19,7 @@ def add_octolinear_constrs(model, graph):
     # TODO might be something tighter here
     bigM = len(graph.edges) * model._settings['max_edge_length']
     min_length = model._settings['min_edge_length']
-    num_feas_dirs = len(graph.edges[0].feas_directions)
+    num_feas_dirs = len(graph.edges[0].feas_sections)
 
     # add binary selection variables
     alphas = model.addVars(len(graph.edges), num_feas_dirs,
@@ -35,7 +35,7 @@ def add_octolinear_constrs(model, graph):
     model.addConstrs((gp.quicksum(alphas[e, j] for j in range(
         num_feas_dirs)) == 1 for e in graph.edges), 'octolinear_disjunct_binaries')
 
-    model.addConstrs((gp.quicksum(graph.edges[e].feas_directions[j] * alphas[e, j]
+    model.addConstrs((gp.quicksum(graph.edges[e].feas_sections[j] * alphas[e, j]
                      for j in range(num_feas_dirs)) == dirs[e] for e in graph.edges), "octolinear_disjunct")  # FIXME currently alphas can be 0, which might mess with this
 
     x = model._x
@@ -46,7 +46,7 @@ def add_octolinear_constrs(model, graph):
     for edge_id, edge in graph.edges.items():
         source = edge.source
         target = edge.target
-        for i, section in enumerate(edge.feas_directions):
+        for i, section in enumerate(edge.feas_sections):
             if section == 0:
                 model.addConstr(y[source] - y[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-1'.format(edge_id, section))
                 model.addConstr(-y[source] + y[target] <= bigM*(1-alphas[edge_id, i]), name='edge{}-sec{}-2'.format(edge_id, section))

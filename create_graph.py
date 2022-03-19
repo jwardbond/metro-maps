@@ -1,7 +1,7 @@
 import json
 import math
 from types import SimpleNamespace
-
+from copy import deepcopy
 
 class Node:
     def __init__(self, node_as_dict): 
@@ -17,9 +17,9 @@ class Edge:
         self.source = edge_as_dict['source']
         self.target = edge_as_dict['target']
         self.relation = edge_as_dict['relation']
-        self.time = edge_as_dict['metadata']['time']
+        # self.time = edge_as_dict['metadata']['time']
         self.line = edge_as_dict['metadata']['lines']
-        self.feas_directions = []
+        self.feas_sections = []
 
 
 class Graph: 
@@ -34,9 +34,8 @@ class Graph:
 
         
         self.__find_neighbours()
-        # self.__add_reverse_edges()
+        self.__add_reverse_edges()
         self.__calc_sections()
-
 
     def __find_neighbours(self):
         for node_id, node in self.nodes.items():
@@ -48,6 +47,17 @@ class Graph:
                     node.neighbours.append(edge.source)
                     node.degree += 1
 
+    def __add_reverse_edges(self): 
+        edges = self.edges
+        num_edges = len(edges)
+
+        for edge_id in range(num_edges):
+            to_reverse = edges[edge_id]
+            edges[num_edges + edge_id] = deepcopy(to_reverse)
+            edges[num_edges + edge_id].source = to_reverse.target
+            edges[num_edges + edge_id].target = to_reverse.source
+
+            
     def __calc_sections(self):
         '''
         Determines the "sections" of all edges in the graph. 
@@ -77,7 +87,7 @@ class Graph:
             section = round((a / (2*math.pi)) * num_sections)
             next_section = sections[(section+1)%len(sections)]
             prev_section = sections[(section-1)%len(sections)]
-            edge.feas_directions = [prev_section, section, next_section]
+            edge.feas_sections = [prev_section, section, next_section]
             # edge.target_directions = list(map(get_opposite_section, edge.source_directions))
         
 
@@ -88,8 +98,8 @@ if __name__ == '__main__':
     for node in graph.nodes.values():
         print(node.id)
         print(node.degree)
-        print(node.neighbours, '\n')
+        print(node.neighbours, '\n')\
 
-    # for edge in graph.edges.values():
-    #     print(edge.source_directions)
-    #     print(edge.target_directions, '\n')
+    for id, edge in graph.edges.items():
+        print(id)
+        print(edge.feas_sections)
