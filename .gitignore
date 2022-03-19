@@ -86,3 +86,7 @@ __pycache__
 
 #jupyter notebooks
 prototypes/
+
+#gurobi output files
+*.lp
+*.MPS
