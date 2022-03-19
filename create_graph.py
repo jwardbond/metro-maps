@@ -10,6 +10,7 @@ class Node:
         self.x = node_as_dict['metadata']['x']
         self.y = node_as_dict['metadata']['y']
         self.degree = 0
+        self.incident_edges = []
 
 class Edge:
     def __init__(self, edge_as_dict):
@@ -35,6 +36,7 @@ class Graph:
         for node_id, node in self.nodes.items():
             for edge_id, edge in self.edges.items():
                 if edge.source == node_id or edge.target == node_id:
+                    node.incident_edges.append(edge_id)
                     node.degree += 1
 
     def calc_sections(self):
