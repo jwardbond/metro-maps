@@ -92,18 +92,23 @@ def add_octolinear_constrs(model, graph):
                     model.addConstr(-z1[source] + z1[target] <= bigM*(1-alphas[edge_id, i]), name='{}_edge{}-sec{}-2'.format(name, edge_id, section))
                     model.addConstr(-z2[source] + z2[target] >= -1*bigM*(1-alphas[edge_id, i]) + min_length, name='{}_edge{}-sec{}-3'.format(name, edge_id, section))
 
-# def add_ordering_constrs(model, graph):
-#     '''
-#     Conserves counterclockwise ordering around all nodes
+def add_ordering_constrs(model, graph):
+    '''
+    Conserves counterclockwise ordering around all nodes
 
-#     :params model: a gurobi model
-#     :params graph: a Graph object   
-#     '''
+    :params model: a gurobi model
+    :params graph: a Graph object   
+    '''
+    fwd_dirs = model._fwd_dirs
+    rev_dirs = model._rev_dirs
+    
+    betas = {}
+    for node_id, node in graph.nodes.items():
+        if node.degree >= 2:
+            betas[node_id] = model.addVars(node.degree, lb=0, ub=1, vtype=GRB.BINARY, name='beta_{}_'.format(node_id))
+            model.addConstr(betas[node_id].sum() == 1, name='node{}_circ_order_binaries'.format(node_id))
 
-#     betas = {}
-#     for node_id, node in graph.nodes:
-#         if node.degree >= 2:
-#             betas[node_id] = model.addVars(node.degree, lb=0, ub=1, vtype=GRB.BINARY, name='beta_{}_'.format(node_id))
+
 
 
 if __name__ == '__main__':
