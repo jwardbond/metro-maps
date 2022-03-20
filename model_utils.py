@@ -101,14 +101,38 @@ def add_ordering_constrs(model, graph):
     '''
     fwd_dirs = model._fwd_dirs
     rev_dirs = model._rev_dirs
+
+    fwd_edges_index = {(edge.source, edge.target): id for id, edge in graph.fwd_edges.items()} #id: (source, target) is a hack to help with indexing
+    rev_edges_index = {(edge.source, edge.target): id for id, edge in graph.rev_edges.items()}
     
     betas = {}
     for node_id, node in graph.nodes.items():
         if node.degree >= 2:
             betas[node_id] = model.addVars(node.degree, lb=0, ub=1, vtype=GRB.BINARY, name='beta_{}_'.format(node_id))
             model.addConstr(betas[node_id].sum() == 1, name='node{}_circ_order_binaries'.format(node_id))
+        
+            neighbour_ids = node.neighbours
+            print(neighbour_ids)
+            for i in range(len(neighbour_ids)):
+                next_i = (i+1)%len(neighbour_ids) # hack for looping back to beginning of neighbour array
 
-
+                # Get dir of first (node, neighbour) edge
+                if (node_id, neighbour_ids[i]) in fwd_edges_index:
+                    first = fwd_dirs[fwd_edges_index[(node_id, neighbour_ids[i])]]
+                elif (node_id, neighbour_ids[i]) in rev_edges_index:
+                    first = rev_dirs[rev_edges_index[(node_id, neighbour_ids[i])]]
+                
+                # Get dir of next (node, neighbour) edge
+                if (node_id, neighbour_ids[next_i]) in fwd_edges_index:
+                    second = fwd_dirs[fwd_edges_index[(node_id, neighbour_ids[next_i])]]
+                elif (node_id, neighbour_ids[next_i]) in rev_edges_index:
+                    second = rev_dirs[rev_edges_index[(node_id, neighbour_ids[next_i])]]
+                
+                model.addConstr(first <= second - 1 + 8*betas[node_id][i], 'circular_order_node{}_{}'.format(node_id, i))
+            
+    model._betas = betas
+            
+    
 
 
 if __name__ == '__main__':
