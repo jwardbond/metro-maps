@@ -39,24 +39,22 @@ class Graph:
         
         self.nodes = {node['id']: Node(node) for node in x['nodes']}
         self.fwd_edges = {i: Edge(edge) for i, edge in enumerate(x['edges'])} #edges as they are given in JSON
+        self.rev_edges = {i: Edge(edge, reverse=True) for i, edge in enumerate(x['edges'])} #
+
 
         self.__find_neighbours()
-
-        self.rev_edges = {i: Edge(edge, reverse=True) for i, edge in enumerate(x['edges'])} #
-        
         self.__calc_sections()
 
     def __find_neighbours(self):
-        edges = self.fwd_edges
+        fwd_edges = self.fwd_edges
+        rev_edges = self.rev_edges
         nodes = self.nodes
         for node_id, node in nodes.items():
-            for edge_id, edge in edges.items():
-                if edge.source == node_id:
-                    node.neighbours.append(edge.target)
-                    node.degree += 1
-                elif edge.target == node_id:
-                    node.neighbours.append(edge.source)
-                    node.degree += 1
+            for edgeset in (fwd_edges, rev_edges):
+                for edge in edgeset.values():
+                    if edge.source == node_id:
+                        node.neighbours.append(edge.target)
+                        node.degree += 1
           
     def __calc_sections(self):
         '''
@@ -92,17 +90,43 @@ class Graph:
                 edge.feas_sections = [prev_section, section, next_section]
                 # edge.target_directions = list(map(get_opposite_section, edge.source_directions))
         
+    def sort_neighbours(self):
+        '''
+        sorts a list of neighbours counterclockwise from positive x direction
+        '''
+        nodes = self.nodes
+        get_angle = lambda vector: (math.atan2(vector.y, vector.x) + 2*math.pi) % (2*math.pi) #angle between 0 and 2p
+
+        for node_id, node in nodes.items():
+            to_sort = []
+            for neighbour_id in node.neighbours:
+                vector = SimpleNamespace()
+                vector.x = nodes[neighbour_id].x - node.x
+                vector.y = nodes[neighbour_id].y - node.y
+                a = get_angle(vector)
+                del vector
+                
+                to_sort.append([neighbour_id, a])
+
+            sorted_neighbours = sorted(to_sort, key=lambda l:l[1], reverse=False) 
+            node.neighbours = [sorted_neighbours[i][0] for i,_ in enumerate(sorted_neighbours)]
 
 if __name__ == '__main__':
 
     #test code
-    graph = Graph('./graphs/test.input.json')
+    graph = Graph('./graphs/bvg.input.json')
     for node in graph.nodes.values():
         print(node.id)
         print(node.degree)
         print(node.neighbours, '\n')\
-
-    for edgeset in (graph.fwd_edges, graph.rev_edges):
-        for id, edge in edgeset.items():
-            print(id)
-            print(edge.feas_sections)
+    
+    # graph.sort_neighbours()
+    # for node in graph.nodes.values():
+    #     print(node.id)
+    #     print(node.degree)
+    #     print(node.neighbours, '\n')\
+    
+    # for edgeset in (graph.fwd_edges, graph.rev_edges):
+    #     for id, edge in edgeset.items():
+    #         print(id)
+    #         print(edge.feas_sections)
