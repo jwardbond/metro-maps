@@ -43,6 +43,7 @@ class Graph:
 
 
         self.__find_neighbours()
+        self.__sort_neighbours()
         self.__calc_sections()
 
     def __find_neighbours(self):
@@ -90,7 +91,7 @@ class Graph:
                 edge.feas_sections = [prev_section, section, next_section]
                 # edge.target_directions = list(map(get_opposite_section, edge.source_directions))
         
-    def sort_neighbours(self):
+    def __sort_neighbours(self):
         '''
         sorts a list of neighbours counterclockwise from positive x direction
         '''
@@ -108,13 +109,15 @@ class Graph:
                 
                 to_sort.append([neighbour_id, a])
 
-            sorted_neighbours = sorted(to_sort, key=lambda l:l[1], reverse=False) 
+            sorted_neighbours = sorted(to_sort, key=lambda l:l[1]) 
+            print(to_sort)
+            print(sorted_neighbours)
             node.neighbours = [sorted_neighbours[i][0] for i,_ in enumerate(sorted_neighbours)]
 
 if __name__ == '__main__':
 
     #test code
-    graph = Graph('./graphs/bvg.input.json')
+    graph = Graph('./graphs/test.input.json')
     for node in graph.nodes.values():
         print(node.id)
         print(node.degree)
