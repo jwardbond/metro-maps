@@ -18,14 +18,14 @@ class Edge:
         if reverse:
             self.source = edge_as_dict['target']
             self.target = edge_as_dict['source']
-            self.relation = edge_as_dict['relation']
+            # self.relation = edge_as_dict['relation']
             # self.time = edge_as_dict['metadata']['time']
             self.line = edge_as_dict['metadata']['lines']
             self.feas_sections = []
         else:        
             self.source = edge_as_dict['source']
             self.target = edge_as_dict['target']
-            self.relation = edge_as_dict['relation']
+            # self.relation = edge_as_dict['relation']
             # self.time = edge_as_dict['metadata']['time']
             self.line = edge_as_dict['metadata']['lines']
             self.feas_sections = []
@@ -110,8 +110,6 @@ class Graph:
                 to_sort.append([neighbour_id, a])
 
             sorted_neighbours = sorted(to_sort, key=lambda l:l[1]) 
-            print(to_sort)
-            print(sorted_neighbours)
             node.neighbours = [sorted_neighbours[i][0] for i,_ in enumerate(sorted_neighbours)]
 
 if __name__ == '__main__':
@@ -129,7 +127,7 @@ if __name__ == '__main__':
     #     print(node.degree)
     #     print(node.neighbours, '\n')\
     
-    # for edgeset in (graph.fwd_edges, graph.rev_edges):
-    #     for id, edge in edgeset.items():
-    #         print(id)
-    #         print(edge.feas_sections)
+    for edgeset in (graph.fwd_edges, graph.rev_edges):
+        for id, edge in edgeset.items():
+            print(id)
+            print(edge.feas_sections)
