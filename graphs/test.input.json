@@ -14,7 +14,18 @@
       "id": "3",
       "label": "station 3",
       "metadata": { "x": 100, "y": -100}
+    }, 
+    {
+      "id": "4",
+      "label": "station 4", 
+      "metadata": {"x":400, "y": -400}
+    },
+    {
+      "id": "5", 
+      "label": "station 5", 
+      "metadata": {"x":800, "y":-500}
     }
+
   ],
   "edges": [
     {
@@ -28,6 +39,18 @@
       "target": "3",
       "relation": "subway",
       "metadata": { "time": 180, "lines": ["U9"] }
+    },
+    {
+      "source": "3", 
+      "target": "4",
+      "relation": "subway",
+      "metadata": { "time": 210, "lines": ["U9"] }
+    },
+    {
+      "source": "4", 
+      "target": "5",
+      "relation": "subway",
+      "metadata": { "time": 240, "lines": ["U9"] }
     }
   ],
   "lines": [
