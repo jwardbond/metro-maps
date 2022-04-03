@@ -8,8 +8,9 @@ import model_utils
 from create_graph import Graph
 
 SETTINGS = {
-    'min_edge_length': 2, 
-    'max_edge_length': 4
+    'min_edge_length': 3, 
+    'max_edge_length': 5,
+    'min_distance': 1
 }
 
 
@@ -17,11 +18,13 @@ def main(graph_path):
 #***************************************
 #Problem Setup
 #***************************************
-    try:
-        graph = Graph(graph_path)
-    except:
-        print('Path' + graph_path + 'not found')
-        sys.exit(1)
+    # try:
+    #     graph = Graph(graph_path)
+    # except:
+    #     print('Path: ' + graph_path + ' not found')
+    #     sys.exit(1)
+    
+    graph = Graph(graph_path)
 
 #****************************************
 #Model Setup
@@ -45,6 +48,7 @@ def main(graph_path):
 
     model_utils.add_octolinear_constrs(m, graph)
     model_utils.add_ordering_constrs(m, graph)
+    model_utils.add_edge_spacing_constrs(m, graph)
 
     m.write('output.lp')
     m.optimize()
@@ -53,5 +57,5 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         main(str(sys.argv[1]))
     else:
-        main('./graphs/test.input.json')
+        main('./graphs/bvg.input.json')
         

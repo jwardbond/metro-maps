@@ -1,6 +1,7 @@
 import numpy as np
 import gurobipy as gp
 from gurobipy import GRB
+from itertools import combinations, compress
 
 from create_graph import Graph
 
@@ -112,7 +113,6 @@ def add_ordering_constrs(model, graph):
             model.addConstr(betas[node_id].sum() == 1, name='node{}_circ_order_binaries'.format(node_id))
         
             neighbour_ids = node.neighbours
-            print(neighbour_ids)
             for i in range(len(neighbour_ids)):
                 next_i = (i+1)%len(neighbour_ids) # hack for looping back to beginning of neighbour array
 
@@ -132,7 +132,87 @@ def add_ordering_constrs(model, graph):
             
     model._betas = betas
             
+def add_edge_spacing_constrs(model, graph):
+
+    x = model._x
+    y = model._y
+    z1 = model._z1
+    z2 = model._z2
+    bigM = 100000
+    d_min = model._settings['min_distance']
+
+    edge_combinations = list(combinations(graph.fwd_edges, 2))
+    list_filter_booleans = []
+
+    # Find which edge sets contain incident edges (shared node)
+    for edge_combination in edge_combinations:
+        node_set = set()
+        for edge_id in edge_combination:
+            node_set.add(graph.fwd_edges[edge_id].source)
+            node_set.add(graph.fwd_edges[edge_id].target)
+        list_filter_booleans.append(len(node_set) == 4) # checks for duplicated edges
+
+    non_incident_edges = list(compress(edge_combinations, list_filter_booleans))
     
+    for edge_pair in non_incident_edges:
+        e1_id = edge_pair[0]
+        e2_id = edge_pair[1]
+        s1 = graph.fwd_edges[e1_id].source
+        t1 = graph.fwd_edges[e1_id].target
+        s2 = graph.fwd_edges[e2_id].source
+        t2 = graph.fwd_edges[e2_id].target
+
+        gamma = model.addVars(8, lb=0, ub=1, vtype=GRB.BINARY, name='gamma_(e{},e{})'.format(e1_id, e2_id))
+        model.addConstr(gp.quicksum(gamma[i] for i in range(8)) == 1, 'gamma_sum(e{},e{})'.format(e1_id, e2_id))
+
+        #section 0
+        model.addConstr(x[s2]-x[s1] <= bigM*(1-gamma[0])-d_min)
+        model.addConstr(x[s2]-x[t1] <= bigM*(1-gamma[0])-d_min)
+        model.addConstr(x[t2]-x[s1] <= bigM*(1-gamma[0])-d_min)
+        model.addConstr(x[t2]-x[t1] <= bigM*(1-gamma[0])-d_min)
+
+        #section 1
+        model.addConstr(z1[s2]-z1[s1] <= bigM*(1-gamma[1])-d_min)
+        model.addConstr(z1[s2]-z1[t1] <= bigM*(1-gamma[1])-d_min)
+        model.addConstr(z1[t2]-z1[s1] <= bigM*(1-gamma[1])-d_min)
+        model.addConstr(z1[t2]-z1[t1] <= bigM*(1-gamma[1])-d_min)
+
+        #section 2
+        model.addConstr(y[s2]-y[s1] <= bigM*(1-gamma[2])-d_min)
+        model.addConstr(y[s2]-y[t1] <= bigM*(1-gamma[2])-d_min)
+        model.addConstr(y[t2]-y[s1] <= bigM*(1-gamma[2])-d_min)
+        model.addConstr(y[t2]-y[t1] <= bigM*(1-gamma[2])-d_min)
+
+        # #section 3
+        model.addConstr(-z2[s2]+z2[s1] <= bigM*(1-gamma[3])-d_min)
+        model.addConstr(-z2[s2]+z2[t1] <= bigM*(1-gamma[3])-d_min)
+        model.addConstr(-z2[t2]+z2[s1] <= bigM*(1-gamma[3])-d_min)
+        model.addConstr(-z2[t2]+z2[t1] <= bigM*(1-gamma[3])-d_min)
+
+        #section 4
+        model.addConstr(-x[s2]+x[s1] <= bigM*(1-gamma[4])-d_min)
+        model.addConstr(-x[s2]+x[t1] <= bigM*(1-gamma[4])-d_min)
+        model.addConstr(-x[t2]+x[s1] <= bigM*(1-gamma[4])-d_min)
+        model.addConstr(-x[t2]+x[t1] <= bigM*(1-gamma[4])-d_min)
+
+        #section 5
+        model.addConstr(-z1[s2]+z1[s1] <= bigM*(1-gamma[5])-d_min)
+        model.addConstr(-z1[s2]+z1[t1] <= bigM*(1-gamma[5])-d_min)
+        model.addConstr(-z1[t2]+z1[s1] <= bigM*(1-gamma[5])-d_min)
+        model.addConstr(-z1[t2]+z1[t1] <= bigM*(1-gamma[5])-d_min)
+
+        #section 6
+        model.addConstr(-y[s2]+y[s1] <= bigM*(1-gamma[6])-d_min)
+        model.addConstr(-y[s2]+y[t1] <= bigM*(1-gamma[6])-d_min)
+        model.addConstr(-y[t2]+y[s1] <= bigM*(1-gamma[6])-d_min)
+        model.addConstr(-y[t2]+y[t1] <= bigM*(1-gamma[6])-d_min)
+
+        #section 7
+        model.addConstr(z2[s2]-z2[s1] <= bigM*(1-gamma[7])-d_min)
+        model.addConstr(z2[s2]-z2[t1] <= bigM*(1-gamma[7])-d_min)
+        model.addConstr(z2[t2]-z2[s1] <= bigM*(1-gamma[7])-d_min)
+        model.addConstr(z2[t2]-z2[t1] <= bigM*(1-gamma[7])-d_min)                      
+
 
 
 if __name__ == '__main__':
@@ -153,5 +233,5 @@ if __name__ == '__main__':
                  2 for node in node_id_list), 'z2_coord')
 
     # Get feasible sectors for all edges
-    add_octolinear_constrs(m, graph)
+    add_edge_spacing_constrs(m, graph)
     m.write('oct_output.lp')
