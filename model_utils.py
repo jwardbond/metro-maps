@@ -138,7 +138,7 @@ def add_edge_spacing_constrs(model, graph):
     y = model._y
     z1 = model._z1
     z2 = model._z2
-    bigM = 100000
+    bigM = 10000 #TODO calculate a better bound
     d_min = model._settings['min_distance']
 
     edge_combinations = list(combinations(graph.fwd_edges, 2))
@@ -213,6 +213,47 @@ def add_edge_spacing_constrs(model, graph):
         model.addConstr(z2[t2]-z2[s1] <= bigM*(1-gamma[7])-d_min)
         model.addConstr(z2[t2]-z2[t1] <= bigM*(1-gamma[7])-d_min)                      
 
+def add_bend_costs(model, graph):
+
+    fwd_dirs = model._fwd_dirs
+
+    # Get all metro lines
+    lines = set()
+    for edge in graph.fwd_edges.values():
+        for line in edge.lines:
+            lines.add(str(line))
+    lines = {i: [] for i in lines} #convert to dict
+
+    #TODO combine into the above block
+    for line, line_edges in lines.items():
+        for edge_id, edge in graph.fwd_edges.items():
+            if line in edge.lines:
+                line_edges.append(edge_id)
+
+    # Sort edges in order
+    for line,  line_edges in lines.items():
+        q = line_edges
+        sorted = []
+        i = 0
+        while q:
+
+            if not sorted:
+                sorted.append(q.pop(0))
+            
+            if graph.fwd_edges[sorted[0]].source == graph.fwd_edges[i].target:
+                sorted.insert(0, q.pop(i))
+                i = 0
+            elif graph.fwd_edges[sorted[-1]].target == graph.fwd_edges[i].source:
+                sorted.append(q.pop(i))
+                i = 0
+            else:
+                i += 1
+            
+        line_edges = sorted
+    
+    print(lines)
+
+    
 
 
 if __name__ == '__main__':

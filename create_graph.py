@@ -20,14 +20,14 @@ class Edge:
             self.target = edge_as_dict['source']
             # self.relation = edge_as_dict['relation']
             # self.time = edge_as_dict['metadata']['time']
-            self.line = edge_as_dict['metadata']['lines']
+            self.lines = edge_as_dict['metadata']['lines']
             self.feas_sections = []
         else:        
             self.source = edge_as_dict['source']
             self.target = edge_as_dict['target']
             # self.relation = edge_as_dict['relation']
             # self.time = edge_as_dict['metadata']['time']
-            self.line = edge_as_dict['metadata']['lines']
+            self.lines = edge_as_dict['metadata']['lines']
             self.feas_sections = []
 
 
