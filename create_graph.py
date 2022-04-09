@@ -39,7 +39,8 @@ class Graph:
         
         self.nodes = {node['id']: Node(node) for node in x['nodes']}
         self.fwd_edges = {i: Edge(edge) for i, edge in enumerate(x['edges'])} #edges as they are given in JSON
-        self.rev_edges = {i: Edge(edge, reverse=True) for i, edge in enumerate(x['edges'])} #
+        self.rev_edges = {i: Edge(edge, reverse=True) for i, edge in enumerate(x['edges'])}
+        self.lines = x['lines'] #
 
 
         self.__find_neighbours()
