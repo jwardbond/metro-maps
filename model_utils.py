@@ -1,7 +1,10 @@
 import numpy as np
+import networkx as nx
 import gurobipy as gp
 from gurobipy import GRB
 from itertools import combinations, compress
+
+import matplotlib.pyplot as plt
 
 from create_graph import Graph
 
@@ -230,30 +233,32 @@ def add_bend_costs(model, graph):
             if line in edge.lines:
                 line_edges.append(edge_id)
 
-    # Sort edges in order
+    # Sort edges in order - essentially finding a path
+    line_dict = {}    
     for line,  line_edges in lines.items():
-        q = line_edges
-        sorted = []
-        i = 0
-        while q:
+        # Get start and end nodes for each item
+        line_dict[line] = {}
+        node_count = {}
+        for edge_id in line_edges:
+            source = graph.fwd_edges[edge_id].source
+            target = graph.fwd_edges[edge_id].target
+            line_dict[line][(source, target)] = edge_id
+        
+        #Order edges in line according to path
+        G = nx.Graph()
+        G.add_edges_from(list(line_dict[line].keys()))
+        leaf_nodes = [x for x in G.nodes if G.degree(x) == 1]
+        if leaf_nodes: #no cycle
+            path = nx.all_simple_edge_paths(G, leaf_nodes[0], leaf_nodes[1]) 
+        else: 
+            to_remove = [i for i in list(G.edges())[0]]
+            print([edge for edge in G.edges()], "\nremoving: ", to_remove)
+            G.remove_edge(to_remove[0], to_remove[1]) #TODO add bend cost of last arc ~~~ Fixes cycle
+            path = nx.all_simple_edge_paths(G, to_remove[0], to_remove[1])
+        print("here", [x for x in path])
 
-            if not sorted:
-                sorted.append(q.pop(0))
-            
-            if graph.fwd_edges[sorted[0]].source == graph.fwd_edges[i].target:
-                sorted.insert(0, q.pop(i))
-                i = 0
-            elif graph.fwd_edges[sorted[-1]].target == graph.fwd_edges[i].source:
-                sorted.append(q.pop(i))
-                i = 0
-            else:
-                i += 1
-            
-        line_edges = sorted
-    
-    print(lines)
-
-    
+        #Add Constr along the path
+        
 
 
 if __name__ == '__main__':
