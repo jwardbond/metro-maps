@@ -4,8 +4,6 @@ import gurobipy as gp
 from gurobipy import GRB
 from itertools import combinations, compress
 
-import matplotlib.pyplot as plt
-
 from create_graph import Graph
 
 # Adds sectioning constraints. When there are 8 sections, this means it
@@ -219,6 +217,11 @@ def add_edge_spacing_constrs(model, graph):
 def add_bend_costs(model, graph):
 
     fwd_dirs = model._fwd_dirs
+    rev_dirs = model._rev_dirs
+
+    # Create dictionaries for looking up edge_id by source and target nodes
+    fwd_edges = {(edge.source, edge.target): edge_id for edge_id, edge in graph.fwd_edges.items()}
+    rev_edges = {(edge.source, edge.target): edge_id for edge_id, edge in graph.rev_edges.items()}
 
     # Get all metro lines
     lines = set()
@@ -233,32 +236,58 @@ def add_bend_costs(model, graph):
             if line in edge.lines:
                 line_edges.append(edge_id)
 
-    # Sort edges in order - essentially finding a path
-    line_dict = {}    
+    bend_costs = []
+    # Sort edges in order - essentially finding a path   
     for line,  line_edges in lines.items():
+        
         # Get start and end nodes for each item
-        line_dict[line] = {}
-        node_count = {}
+        line_dict = {}
         for edge_id in line_edges:
             source = graph.fwd_edges[edge_id].source
             target = graph.fwd_edges[edge_id].target
-            line_dict[line][(source, target)] = edge_id
+            line_dict[(source, target)] = edge_id
         
         #Order edges in line according to path
         G = nx.Graph()
-        G.add_edges_from(list(line_dict[line].keys()))
+        G.add_edges_from(list(line_dict.keys()))
         leaf_nodes = [x for x in G.nodes if G.degree(x) == 1]
         if leaf_nodes: #no cycle
             path = nx.all_simple_edge_paths(G, leaf_nodes[0], leaf_nodes[1]) 
         else: 
             to_remove = [i for i in list(G.edges())[0]]
-            print([edge for edge in G.edges()], "\nremoving: ", to_remove)
             G.remove_edge(to_remove[0], to_remove[1]) #TODO add bend cost of last arc ~~~ Fixes cycle
             path = nx.all_simple_edge_paths(G, to_remove[0], to_remove[1])
-        print("here", [x for x in path])
+    
+        #Add bend constr for each edge along the path
+        path = list(path)[0]
+        for i, _ in enumerate(path[:-1]): 
+            
+            edge1 = path[i]
+            if (edge1[0], edge1[1]) in fwd_edges: 
+                dir1 = fwd_dirs[fwd_edges[edge1]]
+            else: 
+                dir1 = rev_dirs[rev_edges[edge1]]
+            
+            edge2 = path[i+1]
+            if (edge2[0], edge2[1]) in fwd_edges: 
+                dir2 = fwd_dirs[fwd_edges[edge2]]
+            else: 
+                dir2 = rev_dirs[rev_edges[edge2]]
 
-        #Add Constr along the path
-        
+            d = model.addVars(2, lb=0, ub=1, vtype = GRB.BINARY, name='d({},{},{})'.format(edge1[0], edge1[1], edge2[1]))
+            bend_cost = model.addVar(lb=0, vtype = GRB.CONTINUOUS, name='bend_cost({},{},{})'.format(edge1[0], edge1[1], edge2[1]))
+            model.addConstr(-bend_cost <= dir1 - dir2 - 8*d[0] + 8*d[1])
+            model.addConstr(bend_cost >= dir1 - dir2 - 8*d[0] + 8*d[1])
+            
+            bend_costs.append(bend_cost)
+
+
+    model.setObjective(gp.LinExpr(np.ones(len(bend_costs)), bend_costs))
+
+
+
+
+            
 
 
 if __name__ == '__main__':
