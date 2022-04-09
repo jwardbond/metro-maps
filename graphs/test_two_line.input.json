@@ -3,27 +3,27 @@
     {
       "id": "1",
       "label": "station 1",
-      "metadata": { "x": -100, "y": 0 }
+      "metadata": { "x": -1, "y": 0 }
     },
     {
       "id": "2",
       "label": "station 2",
-      "metadata": { "x": 100, "y": 0}
+      "metadata": { "x": 2, "y": 0}
     },
     {
       "id": "3",
       "label": "station 3",
-      "metadata": { "x": 100, "y": -100}
+      "metadata": { "x": 2, "y": -5}
     }, 
     {
       "id": "4",
       "label": "station 4", 
-      "metadata": {"x":400, "y": -400}
+      "metadata": {"x":4, "y": -9}
     },
     {
       "id": "5", 
       "label": "station 5", 
-      "metadata": {"x":800, "y":-500}
+      "metadata": {"x":8, "y":-9}
     }
 
   ],
@@ -32,25 +32,31 @@
       "source": "1",
       "target": "2",
       "relation": "subway",
-      "metadata": { "time": 90, "lines": ["U9"] }
+      "metadata": { "time": 90, "lines": ["U7", "U9"] }
     },
     {
       "source": "2",
       "target": "3",
       "relation": "subway",
-      "metadata": { "time": 180, "lines": ["U9"] }
+      "metadata": { "time": 180, "lines": ["U7", "U9"] }
     },
     {
       "source": "3", 
       "target": "4",
       "relation": "subway",
-      "metadata": { "time": 210, "lines": ["U9"] }
+      "metadata": { "time": 210, "lines": ["U7"] }
     },
     {
       "source": "4", 
       "target": "5",
       "relation": "subway",
-      "metadata": { "time": 240, "lines": ["U9"] }
+      "metadata": { "time": 240, "lines": ["U7"] }
+    },
+    {
+      "source": "5", 
+      "target": "1",
+      "relation": "subway",
+      "metadata": { "time": 240, "lines": ["U7"] }
     }
   ],
   "lines": [
