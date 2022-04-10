@@ -23,8 +23,8 @@
   "homepage": "https://github.com/jwardbond/metro-maps#readme",
   "dependencies": {
     "svg-transit-map": "^0.1.0"
-  }, 
+  },
   "scripts": {
-    "generate_test_graph": "powershell cat graphs/test.input.json | npx svg-transit-map -y > test.svg"
+    "generate": "powershell -command \"cat graphs/tests/one_line.output.json | npx svg-transit-map -y > one_line_occlusion.svg\""
   }
 }
