@@ -90,3 +90,5 @@ prototypes/
 #gurobi output files
 *.lp
 *.MPS
+
+junk_scripts/
