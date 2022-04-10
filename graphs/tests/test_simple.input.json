@@ -1,0 +1,497 @@
+{
+  "nodes": [
+    {
+      "id": "900000100020",
+      "label": "S+U Potsdamer Platz",
+      "metadata": {
+        "x": 537.157,
+        "y": 673.634
+      }
+    },
+    {
+      "id": "900000130002",
+      "label": "S+U Pankow",
+      "metadata": {
+        "x": 537.256,
+        "y": 673.899
+      }
+    },
+    {
+      "id": "900000023201",
+      "label": "S+U Zoologischer Garten",
+      "metadata": {
+        "x": 537.035,
+        "y": 673.623
+      }
+    },
+    {
+      "id": "900000100003",
+      "label": "S+U Alexanderplatz",
+      "metadata": {
+        "x": 537.254,
+        "y": 673.69
+      }
+    },
+    {
+      "id": "900000024106",
+      "label": "S Messe Nord/ICC",
+      "metadata": {
+        "x": 536.897,
+        "y": 673.621
+      }
+    },
+    {
+      "id": "900000110001",
+      "label": "S+U SchÃ¶nhauser Allee",
+      "metadata": {
+        "x": 537.264,
+        "y": 673.817
+      }
+    },
+    {
+      "id": "900000056101",
+      "label": "U Wittenbergplatz",
+      "metadata": {
+        "x": 537.063,
+        "y": 673.601
+      }
+    },
+    {
+      "id": "900000056102",
+      "label": "U Nollendorfplatz",
+      "metadata": {
+        "x": 537.094,
+        "y": 673.5899999999999
+      }
+    },
+    {
+      "id": "900000017103",
+      "label": "U Gleisdreieck",
+      "metadata": {
+        "x": 537.151,
+        "y": 673.5899999999999
+      }
+    },
+    {
+      "id": "900000025202",
+      "label": "U Ruhleben",
+      "metadata": {
+        "x": 536.783,
+        "y": 673.7080000000001
+      }
+    },
+    {
+      "id": "900000025203",
+      "label": "U Olympia-Stadion",
+      "metadata": {
+        "x": 536.807,
+        "y": 673.669
+      }
+    },
+    {
+      "id": "900000026101",
+      "label": "U Neu-Westend",
+      "metadata": {
+        "x": 536.833,
+        "y": 673.6659999999999
+      }
+    },
+    {
+      "id": "900000026201",
+      "label": "Berlin, U Theodor-Heuss-Platz",
+      "metadata": {
+        "x": 536.869,
+        "y": 673.636
+      }
+    },
+    {
+      "id": "900000022101",
+      "label": "U Sophie-Charlotte-Platz",
+      "metadata": {
+        "x": 536.937,
+        "y": 673.642
+      }
+    },
+    {
+      "id": "900000024201",
+      "label": "U Bismarckstr.",
+      "metadata": {
+        "x": 536.959,
+        "y": 673.644
+      }
+    },
+    {
+      "id": "900000022201",
+      "label": "U Deutsche Oper",
+      "metadata": {
+        "x": 536.971,
+        "y": 673.645
+      }
+    },
+    {
+      "id": "900000023101",
+      "label": "U Ernst-Reuter-Platz",
+      "metadata": {
+        "x": 537.007,
+        "y": 673.644
+      }
+    },
+    {
+      "id": "900000056104",
+      "label": "U BÃ¼lowstr.",
+      "metadata": {
+        "x": 537.118,
+        "y": 673.581
+      }
+    },
+    {
+      "id": "900000005252",
+      "label": "U Mendelssohn-Bartholdy-Park",
+      "metadata": {
+        "x": 537.152,
+        "y": 673.6089999999999
+      }
+    },
+    {
+      "id": "900000100010",
+      "label": "U Mohrenstr.",
+      "metadata": {
+        "x": 537.177,
+        "y": 673.644
+      }
+    },
+    {
+      "id": "900000100012",
+      "label": "U Hausvogteiplatz",
+      "metadata": {
+        "x": 537.209,
+        "y": 673.652
+      }
+    },
+    {
+      "id": "900000100013",
+      "label": "U Spittelmarkt",
+      "metadata": {
+        "x": 537.229,
+        "y": 673.643
+      }
+    },
+    {
+      "id": "900000100014",
+      "label": "U MÃ¤rkisches Museum",
+      "metadata": {
+        "x": 537.247,
+        "y": 673.646
+      }
+    },
+    {
+      "id": "900000100015",
+      "label": "U Klosterstr.",
+      "metadata": {
+        "x": 537.257,
+        "y": 673.6700000000001
+      }
+    },
+    {
+      "id": "900000100016",
+      "label": "U Rosa-Luxemburg-Platz",
+      "metadata": {
+        "x": 537.251,
+        "y": 673.72
+      }
+    },
+    {
+      "id": "900000110005",
+      "label": "U Senefelderplatz",
+      "metadata": {
+        "x": 537.257,
+        "y": 673.74
+      }
+    },
+    {
+      "id": "900000110006",
+      "label": "U Eberswalder Str.",
+      "metadata": {
+        "x": 537.256,
+        "y": 673.779
+      }
+    },
+    {
+      "id": "900000130011",
+      "label": "U Vinetastr.",
+      "metadata": {
+        "x": 537.26,
+        "y": 673.863
+      }
+    },
+    {
+      "id": "900000100011",
+      "label": "U Stadtmitte",
+      "metadata": {
+        "x": 537.194,
+        "y": 673.644
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "900000056101",
+      "target": "900000056102",
+      "relation": "subway",
+      "metadata": {
+        "time": 120,
+        "lines": ["U1", "U2", "U3"]
+      }
+    },
+    {
+      "source": "900000025202",
+      "target": "900000025203",
+      "relation": "subway",
+      "metadata": {
+        "time": 120,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000025203",
+      "target": "900000026101",
+      "relation": "subway",
+      "metadata": {
+        "time": 90,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000026101",
+      "target": "900000026201",
+      "relation": "subway",
+      "metadata": {
+        "time": 120,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000026201",
+      "target": "900000024106",
+      "relation": "subway",
+      "metadata": {
+        "time": 90,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000024106",
+      "target": "900000022101",
+      "relation": "subway",
+      "metadata": {
+        "time": 90,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000022101",
+      "target": "900000024201",
+      "relation": "subway",
+      "metadata": {
+        "time": 90,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000024201",
+      "target": "900000022201",
+      "relation": "subway",
+      "metadata": {
+        "time": 60,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000022201",
+      "target": "900000023101",
+      "relation": "subway",
+      "metadata": {
+        "time": 120,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000023101",
+      "target": "900000023201",
+      "relation": "subway",
+      "metadata": {
+        "time": 120,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000023201",
+      "target": "900000056101",
+      "relation": "subway",
+      "metadata": {
+        "time": 150,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000056102",
+      "target": "900000056104",
+      "relation": "subway",
+      "metadata": {
+        "time": 90,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000056104",
+      "target": "900000017103",
+      "relation": "subway",
+      "metadata": {
+        "time": 120,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000017103",
+      "target": "900000005252",
+      "relation": "subway",
+      "metadata": {
+        "time": 90,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000005252",
+      "target": "900000100020",
+      "relation": "subway",
+      "metadata": {
+        "time": 90,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000100020",
+      "target": "900000100010",
+      "relation": "subway",
+      "metadata": {
+        "time": 90,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000100010",
+      "target": "900000100011",
+      "relation": "subway",
+      "metadata": {
+        "time": 60,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000100011",
+      "target": "900000100012",
+      "relation": "subway",
+      "metadata": {
+        "time": 90,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000100012",
+      "target": "900000100013",
+      "relation": "subway",
+      "metadata": {
+        "time": 90,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000100013",
+      "target": "900000100014",
+      "relation": "subway",
+      "metadata": {
+        "time": 60,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000100014",
+      "target": "900000100015",
+      "relation": "subway",
+      "metadata": {
+        "time": 90,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000100015",
+      "target": "900000100003",
+      "relation": "subway",
+      "metadata": {
+        "time": 120,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000100003",
+      "target": "900000100016",
+      "relation": "subway",
+      "metadata": {
+        "time": 120,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000100016",
+      "target": "900000110005",
+      "relation": "subway",
+      "metadata": {
+        "time": 90,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000110005",
+      "target": "900000110006",
+      "relation": "subway",
+      "metadata": {
+        "time": 120,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000110006",
+      "target": "900000110001",
+      "relation": "subway",
+      "metadata": {
+        "time": 120,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000110001",
+      "target": "900000130011",
+      "relation": "subway",
+      "metadata": {
+        "time": 150,
+        "lines": ["U2"]
+      }
+    },
+    {
+      "source": "900000130011",
+      "target": "900000130002",
+      "relation": "subway",
+      "metadata": {
+        "time": 90,
+        "lines": ["U2"]
+      }
+    }
+  ],
+  "lines": [
+    {
+      "id": "U2",
+      "color": "#ff3300",
+      "group": null
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+    "nodes": [
+        {
+            "id": "1",
+            "label": "station 1",
+            "metadata": {
+                "x": 0.0,
+                "y": 0.0
+            }
+        },
+        {
+            "id": "2",
+            "label": "station 2",
+            "metadata": {
+                "x": 6.0,
+                "y": 6.0
+            }
+        },
+        {
+            "id": "3",
+            "label": "station 3",
+            "metadata": {
+                "x": 12.0,
+                "y": 12.0
+            }
+        },
+        {
+            "id": "4",
+            "label": "station 4",
+            "metadata": {
+                "x": 15.0,
+                "y": 15.0
+            }
+        },
+        {
+            "id": "5",
+            "label": "station 5",
+            "metadata": {
+                "x": 18.0,
+                "y": 18.0
+            }
+        }
+    ],
+    "edges": [
+        {
+            "source": "1",
+            "target": "2",
+            "metadata": {
+                "lines": [
+                    "U9"
+                ]
+            }
+        },
+        {
+            "source": "2",
+            "target": "3",
+            "metadata": {
+                "lines": [
+                    "U9"
+                ]
+            }
+        },
+        {
+            "source": "4",
+            "target": "5",
+            "metadata": {
+                "lines": [
+                    "U9"
+                ]
+            }
+        },
+        {
+            "source": "4",
+            "target": "3",
+            "metadata": {
+                "lines": [
+                    "U9"
+                ]
+            }
+        }
+    ],
+    "lines": [
+        {
+            "id": "U9",
+            "color": "#ff7300",
+            "group": null
+        }
+    ]
+}
