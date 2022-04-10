@@ -224,6 +224,7 @@ def add_bend_costs(model, graph):
     rev_edges = {(edge.source, edge.target): edge_id for edge_id, edge in graph.rev_edges.items()}
 
     # Get all metro lines
+    # TODO this can be changed to use the line attribute of graph
     lines = set()
     for edge in graph.fwd_edges.values():
         for line in edge.lines:

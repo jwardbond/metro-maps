@@ -33,10 +33,13 @@ class Edge:
 
 class Graph: 
    
-    def __init__(self, JSON_graph_path):
-        with open(JSON_graph_path) as f:
+    def __init__(self, folder, JSON_graph_name):
+        with open(folder + JSON_graph_name) as f:
             x = json.load(f)
         
+        self.file_name = JSON_graph_name
+        self.folder = folder
+
         self.nodes = {node['id']: Node(node) for node in x['nodes']}
         self.fwd_edges = {i: Edge(edge) for i, edge in enumerate(x['edges'])} #edges as they are given in JSON
         self.rev_edges = {i: Edge(edge, reverse=True) for i, edge in enumerate(x['edges'])}

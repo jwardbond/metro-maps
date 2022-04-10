@@ -240,7 +240,7 @@
       "relation": "subway",
       "metadata": {
         "time": 120,
-        "lines": ["U1", "U2", "U3"]
+        "lines": ["U2"]
       }
     },
     {

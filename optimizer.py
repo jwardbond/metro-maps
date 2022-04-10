@@ -5,6 +5,7 @@ import sys
 import math
 
 import model_utils
+from write_output import write_output
 from create_graph import Graph
 
 SETTINGS = {
@@ -14,17 +15,12 @@ SETTINGS = {
 }
 
 
-def main(graph_path):
+def main(folder, name):
 #***************************************
 #Problem Setup
-#***************************************
-    # try:
-    #     graph = Graph(graph_path)
-    # except:
-    #     print('Path: ' + graph_path + ' not found')
-    #     sys.exit(1)
+#***************************************  
     
-    graph = Graph(graph_path)
+    graph = Graph(folder, name)
 
 #****************************************
 #Model Setup
@@ -51,12 +47,14 @@ def main(graph_path):
     # model_utils.add_edge_spacing_constrs(m, graph) #TODO implement as callback
     model_utils.add_bend_costs(m, graph)
 
-    # m.write('output.lp')
-    # m.optimize()
+    m.write('output.lp')
+    m.optimize()
+
+    write_output(m, graph)
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         main(str(sys.argv[1]))
     else:
-        main('./graphs/test.input.json')
+        main('./graphs/', 'test_simple.input.json')
         
