@@ -44,8 +44,10 @@ def main(folder, name):
 
     model_utils.add_octolinear_constrs(m, graph)
     model_utils.add_ordering_constrs(m, graph)
-    # model_utils.add_edge_spacing_constrs(m, graph) #TODO implement as callback
+    model_utils.add_edge_spacing_constrs(m, graph) #TODO implement as callback
     model_utils.add_bend_costs(m, graph)
+    model_utils.add_relative_pos_cost(m, graph)
+    model_utils.add_edge_length_cost(m, graph)
 
     m.write('output.lp')
     m.optimize()
@@ -56,5 +58,5 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         main(str(sys.argv[1]))
     else:
-        main('./graphs/', 'test_simple.input.json')
+        main('./graphs/', 'bvg.input.json')
         

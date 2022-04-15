@@ -25,6 +25,6 @@
     "svg-transit-map": "^0.1.0"
   },
   "scripts": {
-    "generate": "powershell -command \"cat graphs/tests/one_line.output.json | npx svg-transit-map -y > one_line_occlusion.svg\""
+    "generate": "powershell -command \"cat graphs/tests/one_line.output.json | npx svg-transit-map -y > one_line_new.svg\""
   }
 }

@@ -134,6 +134,9 @@ def add_ordering_constrs(model, graph):
     model._betas = betas
             
 def add_edge_spacing_constrs(model, graph):
+    '''
+    Ensures planarity in the resulting solution. i.e. edges can't cross over eachother
+    '''
 
     x = model._x
     y = model._y
@@ -284,16 +287,46 @@ def add_bend_costs(model, graph):
 
 
     model.setObjective(gp.LinExpr(np.ones(len(bend_costs)), bend_costs))
+    model.update()
 
+def add_relative_pos_cost(model, graph):
 
+    M = 8 #TODO see if I can get this tighter
 
+    fwd_dirs = model._fwd_dirs
+    fwd_edges = graph.fwd_edges
 
-            
+    rpos = model.addVars(len(fwd_edges), lb=0, ub=1, vtype=GRB.BINARY, name='pos_binary')
+    
+    model.addConstrs((fwd_dirs[e] - fwd_edges[e].feas_sections[1] <= M*rpos[e] for e in fwd_edges), 'pos_upper')
+    model.addConstrs((fwd_dirs[e] - fwd_edges[e].feas_sections[1] >= -1*M*rpos[e] for e in fwd_edges), 'pos_upper')
 
+    
+    old_objective = model.getObjective()
+    model.setObjective(old_objective + gp.quicksum(rpos))
+    model.update()
+
+def add_edge_length_cost(model, graph): 
+    fwd_dirs = model._fwd_dirs
+    fwd_edges = graph.fwd_edges
+    nodes = graph.nodes
+    x = model._x
+    y = model._y
+
+    l = model.addVars(len(fwd_edges), lb=0, vtype=GRB.CONTINUOUS, name='edge_length')
+    model.addConstrs((x[fwd_edges[e].source] - x[fwd_edges[e].target] <= l[e] for e in fwd_edges), 'L_x_pos')
+    model.addConstrs((-x[fwd_edges[e].source] + x[fwd_edges[e].target] <= l[e] for e in fwd_edges), 'L_x_neg')
+    model.addConstrs((y[fwd_edges[e].source] - y[fwd_edges[e].target] <= l[e] for e in fwd_edges), 'L_y_pos')
+    model.addConstrs((-y[fwd_edges[e].source] + y[fwd_edges[e].target] <= l[e] for e in fwd_edges), 'L_y_neg')
+
+    old_objective = model.getObjective()
+    model.setObjective(old_objective + gp.quicksum(l))
+    model.update()
 
 if __name__ == '__main__':
     graph = Graph('./graphs/test.input.json')
 
+    
     m = gp.Model('METRO_MAPS')
     m.modelSense = GRB.MINIMIZE
 

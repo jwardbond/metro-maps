@@ -1,0 +1,497 @@
+{
+    "nodes": [
+        {
+            "id": "900000100020",
+            "label": "S+U Potsdamer Platz",
+            "metadata": {
+                "x": 57.0,
+                "y": 6.0
+            }
+        },
+        {
+            "id": "900000130002",
+            "label": "S+U Pankow",
+            "metadata": {
+                "x": 75.0,
+                "y": 33.0
+            }
+        },
+        {
+            "id": "900000023201",
+            "label": "S+U Zoologischer Garten",
+            "metadata": {
+                "x": 45.0,
+                "y": 3.0
+            }
+        },
+        {
+            "id": "900000100003",
+            "label": "S+U Alexanderplatz",
+            "metadata": {
+                "x": 75.0,
+                "y": 15.0
+            }
+        },
+        {
+            "id": "900000024106",
+            "label": "S Messe Nord/ICC",
+            "metadata": {
+                "x": 30.0,
+                "y": 6.0
+            }
+        },
+        {
+            "id": "900000110001",
+            "label": "S+U SchÃƒÂ¶nhauser Allee",
+            "metadata": {
+                "x": 75.0,
+                "y": 27.0
+            }
+        },
+        {
+            "id": "900000056101",
+            "label": "U Wittenbergplatz",
+            "metadata": {
+                "x": 48.0,
+                "y": 0.0
+            }
+        },
+        {
+            "id": "900000056102",
+            "label": "U Nollendorfplatz",
+            "metadata": {
+                "x": 51.0,
+                "y": 0.0
+            }
+        },
+        {
+            "id": "900000017103",
+            "label": "U Gleisdreieck",
+            "metadata": {
+                "x": 57.0,
+                "y": 0.0
+            }
+        },
+        {
+            "id": "900000025202",
+            "label": "U Ruhleben",
+            "metadata": {
+                "x": 18.0,
+                "y": 18.0
+            }
+        },
+        {
+            "id": "900000025203",
+            "label": "U Olympia-Stadion",
+            "metadata": {
+                "x": 21.0,
+                "y": 15.0
+            }
+        },
+        {
+            "id": "900000026101",
+            "label": "U Neu-Westend",
+            "metadata": {
+                "x": 24.0,
+                "y": 12.0
+            }
+        },
+        {
+            "id": "900000026201",
+            "label": "Berlin, U Theodor-Heuss-Platz",
+            "metadata": {
+                "x": 27.0,
+                "y": 9.0
+            }
+        },
+        {
+            "id": "900000022101",
+            "label": "U Sophie-Charlotte-Platz",
+            "metadata": {
+                "x": 33.0,
+                "y": 6.0
+            }
+        },
+        {
+            "id": "900000024201",
+            "label": "U Bismarckstr.",
+            "metadata": {
+                "x": 36.0,
+                "y": 6.0
+            }
+        },
+        {
+            "id": "900000022201",
+            "label": "U Deutsche Oper",
+            "metadata": {
+                "x": 39.0,
+                "y": 6.0
+            }
+        },
+        {
+            "id": "900000023101",
+            "label": "U Ernst-Reuter-Platz",
+            "metadata": {
+                "x": 42.0,
+                "y": 6.0
+            }
+        },
+        {
+            "id": "900000056104",
+            "label": "U BÃƒÂ¼lowstr.",
+            "metadata": {
+                "x": 54.0,
+                "y": 0.0
+            }
+        },
+        {
+            "id": "900000005252",
+            "label": "U Mendelssohn-Bartholdy-Park",
+            "metadata": {
+                "x": 57.0,
+                "y": 3.0
+            }
+        },
+        {
+            "id": "900000100010",
+            "label": "U Mohrenstr.",
+            "metadata": {
+                "x": 60.0,
+                "y": 9.0
+            }
+        },
+        {
+            "id": "900000100012",
+            "label": "U Hausvogteiplatz",
+            "metadata": {
+                "x": 66.0,
+                "y": 9.0
+            }
+        },
+        {
+            "id": "900000100013",
+            "label": "U Spittelmarkt",
+            "metadata": {
+                "x": 69.0,
+                "y": 9.0
+            }
+        },
+        {
+            "id": "900000100014",
+            "label": "U MÃƒÂ¤rkisches Museum",
+            "metadata": {
+                "x": 72.0,
+                "y": 9.0
+            }
+        },
+        {
+            "id": "900000100015",
+            "label": "U Klosterstr.",
+            "metadata": {
+                "x": 75.0,
+                "y": 12.0
+            }
+        },
+        {
+            "id": "900000100016",
+            "label": "U Rosa-Luxemburg-Platz",
+            "metadata": {
+                "x": 75.0,
+                "y": 18.0
+            }
+        },
+        {
+            "id": "900000110005",
+            "label": "U Senefelderplatz",
+            "metadata": {
+                "x": 75.0,
+                "y": 21.0
+            }
+        },
+        {
+            "id": "900000110006",
+            "label": "U Eberswalder Str.",
+            "metadata": {
+                "x": 75.0,
+                "y": 24.0
+            }
+        },
+        {
+            "id": "900000130011",
+            "label": "U Vinetastr.",
+            "metadata": {
+                "x": 75.0,
+                "y": 30.0
+            }
+        },
+        {
+            "id": "900000100011",
+            "label": "U Stadtmitte",
+            "metadata": {
+                "x": 63.0,
+                "y": 9.0
+            }
+        }
+    ],
+    "edges": [
+        {
+            "source": "900000056101",
+            "target": "900000056102",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000025202",
+            "target": "900000025203",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000025203",
+            "target": "900000026101",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000026101",
+            "target": "900000026201",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000026201",
+            "target": "900000024106",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000024106",
+            "target": "900000022101",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000022101",
+            "target": "900000024201",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000024201",
+            "target": "900000022201",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000022201",
+            "target": "900000023101",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000023101",
+            "target": "900000023201",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000023201",
+            "target": "900000056101",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000056102",
+            "target": "900000056104",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000056104",
+            "target": "900000017103",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000017103",
+            "target": "900000005252",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000005252",
+            "target": "900000100020",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000100020",
+            "target": "900000100010",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000100010",
+            "target": "900000100011",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000100011",
+            "target": "900000100012",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000100012",
+            "target": "900000100013",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000100013",
+            "target": "900000100014",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000100014",
+            "target": "900000100015",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000100015",
+            "target": "900000100003",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000100003",
+            "target": "900000100016",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000100016",
+            "target": "900000110005",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000110005",
+            "target": "900000110006",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000110006",
+            "target": "900000110001",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000110001",
+            "target": "900000130011",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        },
+        {
+            "source": "900000130011",
+            "target": "900000130002",
+            "metadata": {
+                "lines": [
+                    "U2"
+                ]
+            }
+        }
+    ],
+    "lines": [
+        {
+            "id": "U2",
+            "color": "#ff3300",
+            "group": null
+        }
+    ]
+}
