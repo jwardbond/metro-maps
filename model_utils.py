@@ -30,7 +30,7 @@ def add_octolinear_constrs(model, graph):
 
     # VARS: edge directions
     fwd_dirs = model.addVars(len(graph.fwd_edges), lb=0,
-                         vtype=GRB.INTEGER, name="fwd_dirs")  # FIXME do I need to add other vars for other direction?
+                         vtype=GRB.INTEGER, name="fwd_dirs") 
     rev_dirs = model.addVars(len(graph.rev_edges), lb=0,
                          vtype=GRB.INTEGER, name="rev_dirs")
     model._fwd_dirs = fwd_dirs
@@ -132,7 +132,22 @@ def add_ordering_constrs(model, graph):
                 model.addConstr(first <= second - 1 + 8*betas[node_id][i], 'circular_order_node{}_{}'.format(node_id, i))
             
     model._betas = betas
-            
+
+def add_max_edge_length_constrs(model, graph):
+    fwd_dirs = model._fwd_dirs
+    fwd_edges = graph.fwd_edges
+    nodes = graph.nodes
+    x = model._x
+    y = model._y
+    lmax = model._settings['max_edge_length']
+
+    model.addConstrs((x[fwd_edges[e].source] - x[fwd_edges[e].target] <= lmax for e in fwd_edges), 'L_max_x_pos')
+    model.addConstrs((-x[fwd_edges[e].source] + x[fwd_edges[e].target] <= lmax for e in fwd_edges), 'L_max_x_neg')
+    model.addConstrs((y[fwd_edges[e].source] - y[fwd_edges[e].target] <= lmax for e in fwd_edges), 'L_max_y_pos')
+    model.addConstrs((-y[fwd_edges[e].source] + y[fwd_edges[e].target] <= lmax for e in fwd_edges), 'L_max_y_neg')
+
+    model.update()
+
 def add_edge_spacing_constrs(model, graph):
     '''
     Ensures planarity in the resulting solution. i.e. edges can't cross over eachother
@@ -142,7 +157,7 @@ def add_edge_spacing_constrs(model, graph):
     y = model._y
     z1 = model._z1
     z2 = model._z2
-    bigM = 10000 #TODO calculate a better bound
+    bigM = len(graph.fwd_edges) * model._settings['max_edge_length']
     d_min = model._settings['min_distance']
 
     edge_combinations = list(combinations(graph.fwd_edges, 2))
@@ -291,7 +306,7 @@ def add_bend_costs(model, graph):
 
 def add_relative_pos_cost(model, graph):
 
-    M = 8 #TODO see if I can get this tighter
+    M = 7
 
     fwd_dirs = model._fwd_dirs
     fwd_edges = graph.fwd_edges
