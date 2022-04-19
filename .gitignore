@@ -92,3 +92,5 @@ prototypes/
 *.MPS
 
 junk_scripts/
+
+*.csv
