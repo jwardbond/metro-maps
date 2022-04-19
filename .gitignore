@@ -92,5 +92,6 @@ prototypes/
 *.MPS
 
 junk_scripts/
+toronto_csv/
 
 *.csv
