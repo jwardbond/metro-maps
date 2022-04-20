@@ -5,7 +5,7 @@
             "label": "S+U Potsdamer Platz",
             "metadata": {
                 "x": 57.0,
-                "y": 6.0
+                "y": 6.000000000003636
             }
         },
         {
@@ -13,15 +13,15 @@
             "label": "S+U Pankow",
             "metadata": {
                 "x": 75.0,
-                "y": 33.0
+                "y": 39.00000000000364
             }
         },
         {
             "id": "900000023201",
             "label": "S+U Zoologischer Garten",
             "metadata": {
-                "x": 45.0,
-                "y": 3.0
+                "x": 39.0,
+                "y": 3.637090628672013e-12
             }
         },
         {
@@ -29,15 +29,15 @@
             "label": "S+U Alexanderplatz",
             "metadata": {
                 "x": 75.0,
-                "y": 15.0
+                "y": 21.000000000003638
             }
         },
         {
             "id": "900000024106",
             "label": "S Messe Nord/ICC",
             "metadata": {
-                "x": 30.0,
-                "y": 6.0
+                "x": 24.0,
+                "y": 0.0
             }
         },
         {
@@ -45,111 +45,111 @@
             "label": "S+U SchÃƒÂ¶nhauser Allee",
             "metadata": {
                 "x": 75.0,
-                "y": 27.0
+                "y": 33.00000000000364
             }
         },
         {
             "id": "900000056101",
             "label": "U Wittenbergplatz",
             "metadata": {
-                "x": 48.0,
-                "y": 0.0
+                "x": 42.0,
+                "y": 3.637090628672013e-12
             }
         },
         {
             "id": "900000056102",
             "label": "U Nollendorfplatz",
             "metadata": {
-                "x": 51.0,
-                "y": 0.0
+                "x": 45.0,
+                "y": 3.637090628672013e-12
             }
         },
         {
             "id": "900000017103",
             "label": "U Gleisdreieck",
             "metadata": {
-                "x": 57.0,
-                "y": 0.0
+                "x": 51.0,
+                "y": 3.637090628672013e-12
             }
         },
         {
             "id": "900000025202",
             "label": "U Ruhleben",
             "metadata": {
-                "x": 18.0,
-                "y": 18.0
+                "x": 12.0,
+                "y": 12.0
             }
         },
         {
             "id": "900000025203",
             "label": "U Olympia-Stadion",
             "metadata": {
-                "x": 21.0,
-                "y": 15.0
+                "x": 15.0,
+                "y": 9.0
             }
         },
         {
             "id": "900000026101",
             "label": "U Neu-Westend",
             "metadata": {
-                "x": 24.0,
-                "y": 12.0
+                "x": 18.0,
+                "y": 6.0
             }
         },
         {
             "id": "900000026201",
             "label": "Berlin, U Theodor-Heuss-Platz",
             "metadata": {
-                "x": 27.0,
-                "y": 9.0
+                "x": 21.0,
+                "y": 3.0
             }
         },
         {
             "id": "900000022101",
             "label": "U Sophie-Charlotte-Platz",
             "metadata": {
-                "x": 33.0,
-                "y": 6.0
+                "x": 27.0,
+                "y": 3.637090628672013e-12
             }
         },
         {
             "id": "900000024201",
             "label": "U Bismarckstr.",
             "metadata": {
-                "x": 36.0,
-                "y": 6.0
+                "x": 30.0,
+                "y": 3.637090628672013e-12
             }
         },
         {
             "id": "900000022201",
             "label": "U Deutsche Oper",
             "metadata": {
-                "x": 39.0,
-                "y": 6.0
+                "x": 33.0,
+                "y": 3.637090628672013e-12
             }
         },
         {
             "id": "900000023101",
             "label": "U Ernst-Reuter-Platz",
             "metadata": {
-                "x": 42.0,
-                "y": 6.0
+                "x": 36.0,
+                "y": 3.637090628672013e-12
             }
         },
         {
             "id": "900000056104",
             "label": "U BÃƒÂ¼lowstr.",
             "metadata": {
-                "x": 54.0,
-                "y": 0.0
+                "x": 48.0,
+                "y": 3.637090628672013e-12
             }
         },
         {
             "id": "900000005252",
             "label": "U Mendelssohn-Bartholdy-Park",
             "metadata": {
-                "x": 57.0,
-                "y": 3.0
+                "x": 54.0,
+                "y": 3.000000000003636
             }
         },
         {
@@ -157,7 +157,7 @@
             "label": "U Mohrenstr.",
             "metadata": {
                 "x": 60.0,
-                "y": 9.0
+                "y": 9.000000000003636
             }
         },
         {
@@ -165,7 +165,7 @@
             "label": "U Hausvogteiplatz",
             "metadata": {
                 "x": 66.0,
-                "y": 9.0
+                "y": 15.000000000003638
             }
         },
         {
@@ -173,7 +173,7 @@
             "label": "U Spittelmarkt",
             "metadata": {
                 "x": 69.0,
-                "y": 9.0
+                "y": 15.000000000003638
             }
         },
         {
@@ -181,7 +181,7 @@
             "label": "U MÃƒÂ¤rkisches Museum",
             "metadata": {
                 "x": 72.0,
-                "y": 9.0
+                "y": 15.000000000003638
             }
         },
         {
@@ -189,7 +189,7 @@
             "label": "U Klosterstr.",
             "metadata": {
                 "x": 75.0,
-                "y": 12.0
+                "y": 18.000000000003638
             }
         },
         {
@@ -197,7 +197,7 @@
             "label": "U Rosa-Luxemburg-Platz",
             "metadata": {
                 "x": 75.0,
-                "y": 18.0
+                "y": 24.000000000003638
             }
         },
         {
@@ -205,7 +205,7 @@
             "label": "U Senefelderplatz",
             "metadata": {
                 "x": 75.0,
-                "y": 21.0
+                "y": 27.000000000003638
             }
         },
         {
@@ -213,7 +213,7 @@
             "label": "U Eberswalder Str.",
             "metadata": {
                 "x": 75.0,
-                "y": 24.0
+                "y": 30.000000000003638
             }
         },
         {
@@ -221,7 +221,7 @@
             "label": "U Vinetastr.",
             "metadata": {
                 "x": 75.0,
-                "y": 30.0
+                "y": 36.00000000000364
             }
         },
         {
@@ -229,7 +229,7 @@
             "label": "U Stadtmitte",
             "metadata": {
                 "x": 63.0,
-                "y": 9.0
+                "y": 12.000000000003636
             }
         }
     ],

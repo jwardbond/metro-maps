@@ -3,8 +3,9 @@ import networkx as nx
 import gurobipy as gp
 from gurobipy import GRB
 from itertools import combinations, compress
+from types import SimpleNamespace
 
-from create_graph import Graph
+from geometry_utils import do_intersect, too_close
 
 # Adds sectioning constraints. When there are 8 sections, this means it
 
@@ -337,6 +338,117 @@ def add_edge_length_cost(model, graph):
     old_objective = model.getObjective()
     model.setObjective(old_objective + gp.quicksum(l))
     model.update()
+
+
+def add_gammas_only(model, graph):
+    pass
+
+def edge_spacing_callback(model, where):
+    pass
+
+def edge_spacing_callback_no_vars(model, where):
+
+    if where == GRB.Callback.MIPSOL:
+        graph = model._graph
+        x_val = model.cbGetSolution(model._x)
+        y_val = model.cbGetSolution(model._y)
+        x = model._x
+        y = model._y
+        z1 = model._z1
+        z2 = model._z2
+        bigM = len(graph.fwd_edges) * model._settings['max_edge_length']
+        d_min = model._settings['min_distance']
+
+        edge_combinations = list(combinations(graph.fwd_edges, 2))
+        list_filter_booleans = []
+
+        # Find which edge sets contain incident edges (shared node)
+        for edge_combination in edge_combinations:
+            node_set = set()
+            for edge_id in edge_combination:
+                node_set.add(graph.fwd_edges[edge_id].source)
+                node_set.add(graph.fwd_edges[edge_id].target)
+            list_filter_booleans.append(len(node_set) == 4) # checks for duplicated edges
+
+        non_incident_edges = list(compress(edge_combinations, list_filter_booleans))
+
+        for edge_pair in non_incident_edges:
+            e1_id = edge_pair[0]
+            e2_id = edge_pair[1]
+
+            s1 = graph.fwd_edges[e1_id].source
+            t1 = graph.fwd_edges[e1_id].target
+            s2 = graph.fwd_edges[e2_id].source
+            t2 = graph.fwd_edges[e2_id].target
+
+            p1 = SimpleNamespace()
+            p1.x = x_val[s1]
+            p1.y = y_val[s1]
+
+            q1 = SimpleNamespace()
+            q1.x = x_val[t1]
+            q1.y = y_val[t1]
+
+            p2 = SimpleNamespace()
+            p2.x = x_val[s2]
+            p2.y = y_val[s2]
+
+            q2 = SimpleNamespace()
+            q2.x = x_val[t2]
+            q2.y = y_val[t2]
+            
+            if too_close(p1, q1, p2, q2, d_min) or do_intersect(p1, q1, p2, q2):
+                gamma = model.addVars(8, lb=0, ub=1, vtype=GRB.BINARY, name='gamma_(e{},e{})'.format(e1_id, e2_id))
+                model.addConstr(gp.quicksum(gamma[i] for i in range(8)) == 1, 'gamma_sum(e{},e{})'.format(e1_id, e2_id))
+
+                #section 0
+                model.addConstr(x[s2]-x[s1] <= bigM*(1-gamma[0])-d_min)
+                model.addConstr(x[s2]-x[t1] <= bigM*(1-gamma[0])-d_min)
+                model.addConstr(x[t2]-x[s1] <= bigM*(1-gamma[0])-d_min)
+                model.addConstr(x[t2]-x[t1] <= bigM*(1-gamma[0])-d_min)
+
+                #section 1
+                model.addConstr(z1[s2]-z1[s1] <= bigM*(1-gamma[1])-d_min)
+                model.addConstr(z1[s2]-z1[t1] <= bigM*(1-gamma[1])-d_min)
+                model.addConstr(z1[t2]-z1[s1] <= bigM*(1-gamma[1])-d_min)
+                model.addConstr(z1[t2]-z1[t1] <= bigM*(1-gamma[1])-d_min)
+
+                #section 2
+                model.addConstr(y[s2]-y[s1] <= bigM*(1-gamma[2])-d_min)
+                model.addConstr(y[s2]-y[t1] <= bigM*(1-gamma[2])-d_min)
+                model.addConstr(y[t2]-y[s1] <= bigM*(1-gamma[2])-d_min)
+                model.addConstr(y[t2]-y[t1] <= bigM*(1-gamma[2])-d_min)
+
+                # #section 3
+                model.addConstr(-z2[s2]+z2[s1] <= bigM*(1-gamma[3])-d_min)
+                model.addConstr(-z2[s2]+z2[t1] <= bigM*(1-gamma[3])-d_min)
+                model.addConstr(-z2[t2]+z2[s1] <= bigM*(1-gamma[3])-d_min)
+                model.addConstr(-z2[t2]+z2[t1] <= bigM*(1-gamma[3])-d_min)
+
+                #section 4
+                model.addConstr(-x[s2]+x[s1] <= bigM*(1-gamma[4])-d_min)
+                model.addConstr(-x[s2]+x[t1] <= bigM*(1-gamma[4])-d_min)
+                model.addConstr(-x[t2]+x[s1] <= bigM*(1-gamma[4])-d_min)
+                model.addConstr(-x[t2]+x[t1] <= bigM*(1-gamma[4])-d_min)
+
+                #section 5
+                model.addConstr(-z1[s2]+z1[s1] <= bigM*(1-gamma[5])-d_min)
+                model.addConstr(-z1[s2]+z1[t1] <= bigM*(1-gamma[5])-d_min)
+                model.addConstr(-z1[t2]+z1[s1] <= bigM*(1-gamma[5])-d_min)
+                model.addConstr(-z1[t2]+z1[t1] <= bigM*(1-gamma[5])-d_min)
+
+                #section 6
+                model.addConstr(-y[s2]+y[s1] <= bigM*(1-gamma[6])-d_min)
+                model.addConstr(-y[s2]+y[t1] <= bigM*(1-gamma[6])-d_min)
+                model.addConstr(-y[t2]+y[s1] <= bigM*(1-gamma[6])-d_min)
+                model.addConstr(-y[t2]+y[t1] <= bigM*(1-gamma[6])-d_min)
+
+                #section 7
+                model.addConstr(z2[s2]-z2[s1] <= bigM*(1-gamma[7])-d_min)
+                model.addConstr(z2[s2]-z2[t1] <= bigM*(1-gamma[7])-d_min)
+                model.addConstr(z2[t2]-z2[s1] <= bigM*(1-gamma[7])-d_min)
+                model.addConstr(z2[t2]-z2[t1] <= bigM*(1-gamma[7])-d_min)   
+
 
 if __name__ == '__main__':
     graph = Graph('./graphs/test.input.json')

@@ -93,5 +93,6 @@ prototypes/
 
 junk_scripts/
 toronto_csv/
+experiments/
 
 *.csv
