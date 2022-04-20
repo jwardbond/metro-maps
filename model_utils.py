@@ -323,9 +323,7 @@ def add_relative_pos_cost(model, graph):
     model.update()
 
 def add_edge_length_cost(model, graph): 
-    fwd_dirs = model._fwd_dirs
     fwd_edges = graph.fwd_edges
-    nodes = graph.nodes
     x = model._x
     y = model._y
 
@@ -341,10 +339,138 @@ def add_edge_length_cost(model, graph):
 
 
 def add_gammas_only(model, graph):
-    pass
+    edge_combinations = list(combinations(graph.fwd_edges, 2))
+    list_filter_booleans = []
+
+    # Find which edge sets contain incident edges (shared node)
+    for edge_combination in edge_combinations:
+        node_set = set()
+        for edge_id in edge_combination:
+            node_set.add(graph.fwd_edges[edge_id].source)
+            node_set.add(graph.fwd_edges[edge_id].target)
+        list_filter_booleans.append(len(node_set) == 4) # checks for duplicated edges
+
+    non_incident_edges = list(compress(edge_combinations, list_filter_booleans))
+    
+    gamma_dict = {}
+    for edge_pair in non_incident_edges:
+        e1_id = edge_pair[0]
+        e2_id = edge_pair[1]
+
+        gammas = model.addVars(8, lb=0, ub=1, vtype=GRB.BINARY, name='gamma_(e{},e{})'.format(e1_id, e2_id))
+        gamma_dict[edge_pair]= gammas
+    
+    model._gamma_dict = gamma_dict
+    model._non_incident_edges = non_incident_edges
+    model.update()
+
 
 def edge_spacing_callback(model, where):
-    pass
+    if where == GRB.Callback.MIPSOL:
+        
+        graph = model._graph
+        bigM = len(graph.fwd_edges) * model._settings['max_edge_length']
+        d_min = model._settings['min_distance']
+
+        gamma_dict = model._gamma_dict
+        non_incident_edges = model._non_incident_edges
+
+        x_val = model.cbGetSolution(model._x)
+        y_val = model.cbGetSolution(model._y)
+        z1_val = model.cbGetSolution(model._z1)
+        z2_val = model.cbGetSolution(model._z2)
+        x = model._x
+        y = model._y
+        z1 = model._z1
+        z2 = model._z2
+
+        for edge_pair in non_incident_edges:
+            e1_id = edge_pair[0]
+            e2_id = edge_pair[1]
+
+            s1 = graph.fwd_edges[e1_id].source
+            t1 = graph.fwd_edges[e1_id].target
+            s2 = graph.fwd_edges[e2_id].source
+            t2 = graph.fwd_edges[e2_id].target
+
+            p1 = SimpleNamespace()
+            p1.x = x_val[s1]
+            p1.y = y_val[s1]
+            p1.z1 = z1_val[s1]
+            p1.z2 = z2_val[s1]
+
+            q1 = SimpleNamespace()
+            q1.x = x_val[t1]
+            q1.y = y_val[t1]
+            q1.z1 = z1_val[t1]
+            q1.z2 = z2_val[t1]
+
+            p2 = SimpleNamespace()
+            p2.x = x_val[s2]
+            p2.y = y_val[s2]
+            p2.z1 = z1_val[s2]
+            p2.z2 = z2_val[s2]
+
+            q2 = SimpleNamespace()
+            q2.x = x_val[t2]
+            q2.y = y_val[t2]
+            q2.z1 = z1_val[t2]
+            q2.z2 = z2_val[t2]
+            
+            if too_close(p1, q1, p2, q2, d_min) or do_intersect(p1, q1, p2, q2):
+                gamma = gamma_dict[edge_pair]
+                # ggg = [g for g in gamma.values()]
+                model.cbLazy(gp.quicksum(gamma) == 1, 'gamma_sum(e{},e{})'.format(e1_id, e2_id))
+
+                #section 0
+                model.cbLazy(x[s2]-x[s1] <= bigM*(1-gamma[0])-d_min)
+                model.cbLazy(x[s2]-x[t1] <= bigM*(1-gamma[0])-d_min)
+                model.cbLazy(x[t2]-x[s1] <= bigM*(1-gamma[0])-d_min)
+                model.cbLazy(x[t2]-x[t1] <= bigM*(1-gamma[0])-d_min)
+
+                #section 1
+                model.cbLazy(z1[s2]-z1[s1] <= bigM*(1-gamma[1])-d_min)
+                model.cbLazy(z1[s2]-z1[t1] <= bigM*(1-gamma[1])-d_min)
+                model.cbLazy(z1[t2]-z1[s1] <= bigM*(1-gamma[1])-d_min)
+                model.cbLazy(z1[t2]-z1[t1] <= bigM*(1-gamma[1])-d_min)
+
+                #section 2
+                model.cbLazy(y[s2]-y[s1] <= bigM*(1-gamma[2])-d_min)
+                model.cbLazy(y[s2]-y[t1] <= bigM*(1-gamma[2])-d_min)
+                model.cbLazy(y[t2]-y[s1] <= bigM*(1-gamma[2])-d_min)
+                model.cbLazy(y[t2]-y[t1] <= bigM*(1-gamma[2])-d_min)
+
+                # #section 3
+                model.cbLazy(-z2[s2]+z2[s1] <= bigM*(1-gamma[3])-d_min)
+                model.cbLazy(-z2[s2]+z2[t1] <= bigM*(1-gamma[3])-d_min)
+                model.cbLazy(-z2[t2]+z2[s1] <= bigM*(1-gamma[3])-d_min)
+                model.cbLazy(-z2[t2]+z2[t1] <= bigM*(1-gamma[3])-d_min)
+
+                #section 4
+                model.cbLazy(-x[s2]+x[s1] <= bigM*(1-gamma[4])-d_min)
+                model.cbLazy(-x[s2]+x[t1] <= bigM*(1-gamma[4])-d_min)
+                model.cbLazy(-x[t2]+x[s1] <= bigM*(1-gamma[4])-d_min)
+                model.cbLazy(-x[t2]+x[t1] <= bigM*(1-gamma[4])-d_min)
+
+                #section 5
+                model.cbLazy(-z1[s2]+z1[s1] <= bigM*(1-gamma[5])-d_min)
+                model.cbLazy(-z1[s2]+z1[t1] <= bigM*(1-gamma[5])-d_min)
+                model.cbLazy(-z1[t2]+z1[s1] <= bigM*(1-gamma[5])-d_min)
+                model.cbLazy(-z1[t2]+z1[t1] <= bigM*(1-gamma[5])-d_min)
+
+                #section 6
+                model.cbLazy(-y[s2]+y[s1] <= bigM*(1-gamma[6])-d_min)
+                model.cbLazy(-y[s2]+y[t1] <= bigM*(1-gamma[6])-d_min)
+                model.cbLazy(-y[t2]+y[s1] <= bigM*(1-gamma[6])-d_min)
+                model.cbLazy(-y[t2]+y[t1] <= bigM*(1-gamma[6])-d_min)
+
+                #section 7
+                model.cbLazy(z2[s2]-z2[s1] <= bigM*(1-gamma[7])-d_min)
+                model.cbLazy(z2[s2]-z2[t1] <= bigM*(1-gamma[7])-d_min)
+                model.cbLazy(z2[t2]-z2[s1] <= bigM*(1-gamma[7])-d_min)
+                model.cbLazy(z2[t2]-z2[t1] <= bigM*(1-gamma[7])-d_min)   
+
+
 
 def edge_spacing_callback_no_vars(model, where):
 
@@ -449,25 +575,3 @@ def edge_spacing_callback_no_vars(model, where):
                 model.addConstr(z2[t2]-z2[s1] <= bigM*(1-gamma[7])-d_min)
                 model.addConstr(z2[t2]-z2[t1] <= bigM*(1-gamma[7])-d_min)   
 
-
-if __name__ == '__main__':
-    graph = Graph('./graphs/test.input.json')
-
-    
-    m = gp.Model('METRO_MAPS')
-    m.modelSense = GRB.MINIMIZE
-
-    node_id_list = graph.nodes.keys()
-    x = m.addVars(node_id_list, lb=0, vtype=GRB.CONTINUOUS, name='x')
-    y = m.addVars(node_id_list, lb=0, vtype=GRB.CONTINUOUS, name='y')
-    z1 = m.addVars(node_id_list, lb=0, vtype=GRB.CONTINUOUS, name='z1')
-    z2 = m.addVars(node_id_list, lb=0, vtype=GRB.CONTINUOUS, name='z2')
-
-    m.addConstrs((z1[node] == (x[node]+y[node]) /
-                 2 for node in node_id_list), 'z1_coord')
-    m.addConstrs((z2[node] == (x[node]-y[node]) /
-                 2 for node in node_id_list), 'z2_coord')
-
-    # Get feasible sectors for all edges
-    add_edge_spacing_constrs(m, graph)
-    m.write('oct_output.lp')

@@ -50,20 +50,34 @@ def too_close(p1, q1, p2, q2, d_min):
     Tests if two line segments are closer than d_min in the x or y-directions
     '''
     #x-direction 
-    if  abs(p1.x - p2.x) < d_min or \
-        abs(p1.x - q2.x) < d_min or \
-        abs(q1.x - p2.x) < d_min or \
-        abs(q1.x - q2.x):
-        return True
-
-    #y-direction
-    if  abs(p1.y - p2.y) < d_min or \
-        abs(p1.y - q2.y) < d_min or \
-        abs(p2.y - q1.y) < d_min or \
-        abs(p2.y - q2.y):
-        return True
+    if  abs(p1.x - p2.x) >= d_min or \
+        abs(p1.x - q2.x) >= d_min or \
+        abs(q1.x - p2.x) >= d_min or \
+        abs(q1.x - q2.x) >= d_min:
+        return False
     
-    return False
+    #y-direction
+    if  abs(p1.y - p2.y) >= d_min or \
+        abs(p1.y - q2.y) >= d_min or \
+        abs(q1.y - p2.y) >= d_min or \
+        abs(q1.y - q2.y) >= d_min:
+        return False
+    
+    #z1-direction
+    if  abs(p1.z1 - p2.z1) >= d_min or \
+        abs(p1.z1 - q2.z1) >= d_min or \
+        abs(q1.z1 - p2.z1) >= d_min or \
+        abs(q1.z1 - q2.z1) >= d_min:
+        return False
+
+    #z2-direction
+    if  abs(p1.z2 - p2.z2) >= d_min or \
+        abs(p1.z2 - q2.z2) >= d_min or \
+        abs(p2.z2 - q1.z2) >= d_min or \
+        abs(p2.z2 - q2.z2) >= d_min:
+        return  False
+    
+    return True
 
 # Given three collinear points p, q, r, the function checks if
 # point q lies on line segment 'pr'

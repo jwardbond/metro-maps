@@ -25,6 +25,6 @@
     "svg-transit-map": "^0.1.0"
   },
   "scripts": {
-    "generate": "powershell -command \"cat graphs/toronto.output.json | npx svg-transit-map -y > toronto_no_edge_spacing.svg\""
+    "generate": "powershell -command \"cat graphs/montpellier.output.json | npx svg-transit-map -y > montpellier_edge_spacing_callback.svg\""
   }
 }
