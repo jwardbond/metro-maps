@@ -235,6 +235,8 @@ def add_edge_spacing_constrs(model, graph):
 
 def add_bend_costs(model, graph):
 
+    weight=model._settings['obj_weights'][0]
+
     fwd_dirs = model._fwd_dirs
     rev_dirs = model._rev_dirs
 
@@ -302,7 +304,7 @@ def add_bend_costs(model, graph):
             bend_costs.append(bend_cost)
 
 
-    model.setObjective(gp.LinExpr(np.ones(len(bend_costs)), bend_costs))
+    model.setObjective(gp.quicksum(weight*bend_costs))
     model.update()
 
 def add_relative_pos_cost(model, graph):
@@ -311,18 +313,22 @@ def add_relative_pos_cost(model, graph):
 
     fwd_dirs = model._fwd_dirs
     fwd_edges = graph.fwd_edges
+    weight=model._settings['obj_weights'][1]
 
     rpos = model.addVars(len(fwd_edges), lb=0, ub=1, vtype=GRB.BINARY, name='pos_binary')
     
     model.addConstrs((fwd_dirs[e] - fwd_edges[e].feas_sections[1] <= M*rpos[e] for e in fwd_edges), 'pos_upper')
     model.addConstrs((fwd_dirs[e] - fwd_edges[e].feas_sections[1] >= -1*M*rpos[e] for e in fwd_edges), 'pos_upper')
+    model.update()
 
-    
     old_objective = model.getObjective()
-    model.setObjective(old_objective + gp.quicksum(rpos))
+    model.setObjective(old_objective + gp.quicksum([weight*r for r in rpos.values()]))
     model.update()
 
 def add_edge_length_cost(model, graph): 
+
+    weight=model._settings['obj_weights'][2]
+
     fwd_edges = graph.fwd_edges
     x = model._x
     y = model._y
@@ -334,7 +340,7 @@ def add_edge_length_cost(model, graph):
     model.addConstrs((-y[fwd_edges[e].source] + y[fwd_edges[e].target] <= l[e] for e in fwd_edges), 'L_y_neg')
 
     old_objective = model.getObjective()
-    model.setObjective(old_objective + gp.quicksum(l))
+    model.setObjective(old_objective + gp.quicksum([weight*i for i in l.values()]))
     model.update()
 
 
@@ -418,6 +424,8 @@ def edge_spacing_callback(model, where):
             q2.z2 = z2_val[t2]
             
             if too_close(p1, q1, p2, q2, d_min) or do_intersect(p1, q1, p2, q2):
+                #find most violated
+
                 gamma = gamma_dict[edge_pair]
                 # ggg = [g for g in gamma.values()]
                 model.cbLazy(gp.quicksum(gamma) == 1, 'gamma_sum(e{},e{})'.format(e1_id, e2_id))
@@ -469,109 +477,3 @@ def edge_spacing_callback(model, where):
                 model.cbLazy(z2[s2]-z2[t1] <= bigM*(1-gamma[7])-d_min)
                 model.cbLazy(z2[t2]-z2[s1] <= bigM*(1-gamma[7])-d_min)
                 model.cbLazy(z2[t2]-z2[t1] <= bigM*(1-gamma[7])-d_min)   
-
-
-
-def edge_spacing_callback_no_vars(model, where):
-
-    if where == GRB.Callback.MIPSOL:
-        graph = model._graph
-        x_val = model.cbGetSolution(model._x)
-        y_val = model.cbGetSolution(model._y)
-        x = model._x
-        y = model._y
-        z1 = model._z1
-        z2 = model._z2
-        bigM = len(graph.fwd_edges) * model._settings['max_edge_length']
-        d_min = model._settings['min_distance']
-
-        edge_combinations = list(combinations(graph.fwd_edges, 2))
-        list_filter_booleans = []
-
-        # Find which edge sets contain incident edges (shared node)
-        for edge_combination in edge_combinations:
-            node_set = set()
-            for edge_id in edge_combination:
-                node_set.add(graph.fwd_edges[edge_id].source)
-                node_set.add(graph.fwd_edges[edge_id].target)
-            list_filter_booleans.append(len(node_set) == 4) # checks for duplicated edges
-
-        non_incident_edges = list(compress(edge_combinations, list_filter_booleans))
-
-        for edge_pair in non_incident_edges:
-            e1_id = edge_pair[0]
-            e2_id = edge_pair[1]
-
-            s1 = graph.fwd_edges[e1_id].source
-            t1 = graph.fwd_edges[e1_id].target
-            s2 = graph.fwd_edges[e2_id].source
-            t2 = graph.fwd_edges[e2_id].target
-
-            p1 = SimpleNamespace()
-            p1.x = x_val[s1]
-            p1.y = y_val[s1]
-
-            q1 = SimpleNamespace()
-            q1.x = x_val[t1]
-            q1.y = y_val[t1]
-
-            p2 = SimpleNamespace()
-            p2.x = x_val[s2]
-            p2.y = y_val[s2]
-
-            q2 = SimpleNamespace()
-            q2.x = x_val[t2]
-            q2.y = y_val[t2]
-            
-            if too_close(p1, q1, p2, q2, d_min) or do_intersect(p1, q1, p2, q2):
-                gamma = model.addVars(8, lb=0, ub=1, vtype=GRB.BINARY, name='gamma_(e{},e{})'.format(e1_id, e2_id))
-                model.addConstr(gp.quicksum(gamma[i] for i in range(8)) == 1, 'gamma_sum(e{},e{})'.format(e1_id, e2_id))
-
-                #section 0
-                model.addConstr(x[s2]-x[s1] <= bigM*(1-gamma[0])-d_min)
-                model.addConstr(x[s2]-x[t1] <= bigM*(1-gamma[0])-d_min)
-                model.addConstr(x[t2]-x[s1] <= bigM*(1-gamma[0])-d_min)
-                model.addConstr(x[t2]-x[t1] <= bigM*(1-gamma[0])-d_min)
-
-                #section 1
-                model.addConstr(z1[s2]-z1[s1] <= bigM*(1-gamma[1])-d_min)
-                model.addConstr(z1[s2]-z1[t1] <= bigM*(1-gamma[1])-d_min)
-                model.addConstr(z1[t2]-z1[s1] <= bigM*(1-gamma[1])-d_min)
-                model.addConstr(z1[t2]-z1[t1] <= bigM*(1-gamma[1])-d_min)
-
-                #section 2
-                model.addConstr(y[s2]-y[s1] <= bigM*(1-gamma[2])-d_min)
-                model.addConstr(y[s2]-y[t1] <= bigM*(1-gamma[2])-d_min)
-                model.addConstr(y[t2]-y[s1] <= bigM*(1-gamma[2])-d_min)
-                model.addConstr(y[t2]-y[t1] <= bigM*(1-gamma[2])-d_min)
-
-                # #section 3
-                model.addConstr(-z2[s2]+z2[s1] <= bigM*(1-gamma[3])-d_min)
-                model.addConstr(-z2[s2]+z2[t1] <= bigM*(1-gamma[3])-d_min)
-                model.addConstr(-z2[t2]+z2[s1] <= bigM*(1-gamma[3])-d_min)
-                model.addConstr(-z2[t2]+z2[t1] <= bigM*(1-gamma[3])-d_min)
-
-                #section 4
-                model.addConstr(-x[s2]+x[s1] <= bigM*(1-gamma[4])-d_min)
-                model.addConstr(-x[s2]+x[t1] <= bigM*(1-gamma[4])-d_min)
-                model.addConstr(-x[t2]+x[s1] <= bigM*(1-gamma[4])-d_min)
-                model.addConstr(-x[t2]+x[t1] <= bigM*(1-gamma[4])-d_min)
-
-                #section 5
-                model.addConstr(-z1[s2]+z1[s1] <= bigM*(1-gamma[5])-d_min)
-                model.addConstr(-z1[s2]+z1[t1] <= bigM*(1-gamma[5])-d_min)
-                model.addConstr(-z1[t2]+z1[s1] <= bigM*(1-gamma[5])-d_min)
-                model.addConstr(-z1[t2]+z1[t1] <= bigM*(1-gamma[5])-d_min)
-
-                #section 6
-                model.addConstr(-y[s2]+y[s1] <= bigM*(1-gamma[6])-d_min)
-                model.addConstr(-y[s2]+y[t1] <= bigM*(1-gamma[6])-d_min)
-                model.addConstr(-y[t2]+y[s1] <= bigM*(1-gamma[6])-d_min)
-                model.addConstr(-y[t2]+y[t1] <= bigM*(1-gamma[6])-d_min)
-
-                #section 7
-                model.addConstr(z2[s2]-z2[s1] <= bigM*(1-gamma[7])-d_min)
-                model.addConstr(z2[s2]-z2[t1] <= bigM*(1-gamma[7])-d_min)
-                model.addConstr(z2[t2]-z2[s1] <= bigM*(1-gamma[7])-d_min)
-                model.addConstr(z2[t2]-z2[t1] <= bigM*(1-gamma[7])-d_min)   
-

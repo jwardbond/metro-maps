@@ -4,72 +4,72 @@
             "id": "900000096101",
             "label": "S+U Wittenau",
             "metadata": {
-                "x": 35.0,
-                "y": 30.0
+                "x": 40.0,
+                "y": 34.5
             }
         },
         {
             "id": "900000007102",
             "label": "S+U Gesundbrunnen",
             "metadata": {
-                "x": 42.0,
-                "y": 21.0
+                "x": 47.0,
+                "y": 25.5
             }
         },
         {
             "id": "900000100001",
             "label": "S+U Friedrichstr.",
             "metadata": {
-                "x": 43.0,
-                "y": 15.0
+                "x": 46.0,
+                "y": 19.5
             }
         },
         {
             "id": "900000100020",
             "label": "S+U Potsdamer Platz",
             "metadata": {
-                "x": 41.0,
-                "y": 13.0
+                "x": 46.5,
+                "y": 16.0
             }
         },
         {
             "id": "900000057103",
             "label": "S+U Yorckstr.",
             "metadata": {
-                "x": 40.0,
-                "y": 9.0
+                "x": 45.5,
+                "y": 12.0
             }
         },
         {
             "id": "900000062202",
             "label": "S+U Rathaus Steglitz",
             "metadata": {
-                "x": 36.0,
-                "y": 4.0
+                "x": 37.5,
+                "y": 7.0
             }
         },
         {
             "id": "900000130002",
             "label": "S+U Pankow",
             "metadata": {
-                "x": 47.0,
-                "y": 22.0
+                "x": 53.5,
+                "y": 25.0
             }
         },
         {
             "id": "900000089303",
             "label": "S Tegel",
             "metadata": {
-                "x": 30.0,
-                "y": 30.0
+                "x": 35.0,
+                "y": 33.5
             }
         },
         {
             "id": "900000096458",
             "label": "S+U Karl-Bonhoeffer-Nervenklinik",
             "metadata": {
-                "x": 35.0,
-                "y": 28.0
+                "x": 40.0,
+                "y": 32.5
             }
         },
         {
@@ -77,79 +77,79 @@
             "label": "S Spandau",
             "metadata": {
                 "x": 23.0,
-                "y": 17.0
+                "y": 23.0
             }
         },
         {
             "id": "900000024101",
             "label": "S Charlottenburg",
             "metadata": {
-                "x": 33.0,
-                "y": 13.0
+                "x": 34.0,
+                "y": 16.5
             }
         },
         {
             "id": "900000023201",
             "label": "S+U Zoologischer Garten",
             "metadata": {
-                "x": 36.0,
-                "y": 13.0
+                "x": 39.5,
+                "y": 17.0
             }
         },
         {
             "id": "900000100003",
             "label": "S+U Alexanderplatz",
             "metadata": {
-                "x": 47.0,
-                "y": 16.0
+                "x": 53.5,
+                "y": 19.0
             }
         },
         {
             "id": "900000100004",
             "label": "S+U JannowitzbrÃ¼cke",
             "metadata": {
-                "x": 48.0,
-                "y": 15.0
+                "x": 53.5,
+                "y": 18.0
             }
         },
         {
             "id": "900000120004",
             "label": "S+U Warschauer Str.",
             "metadata": {
-                "x": 49.0,
-                "y": 11.0
+                "x": 56.5,
+                "y": 14.0
             }
         },
         {
             "id": "900000054105",
             "label": "S+U Innsbrucker Platz",
             "metadata": {
-                "x": 37.0,
-                "y": 7.0
+                "x": 41.5,
+                "y": 10.0
             }
         },
         {
             "id": "900000044202",
             "label": "S+U Bundesplatz",
             "metadata": {
-                "x": 36.0,
-                "y": 8.0
+                "x": 39.5,
+                "y": 11.0
             }
         },
         {
             "id": "900000045102",
             "label": "S+U Heidelberger Platz",
             "metadata": {
-                "x": 33.0,
-                "y": 9.0
+                "x": 37.0,
+                "y": 12.5
             }
         },
         {
             "id": "900000024106",
             "label": "S Messe Nord/ICC",
             "metadata": {
-                "x": 31.0,
-                "y": 14.0
+                "x": 32.0,
+                "y": 17.0
             }
         },
         {
@@ -157,54 +157,54 @@
             "label": "S+U Jungfernheide",
             "metadata": {
                 "x": 32.0,
-                "y": 17.0
+                "y": 21.0
             }
         },
         {
             "id": "900000001201",
             "label": "S+U Westhafen",
             "metadata": {
-                "x": 36.0,
-                "y": 19.0
+                "x": 39.5,
+                "y": 21.0
             }
         },
         {
             "id": "900000009104",
             "label": "S+U Wedding",
             "metadata": {
-                "x": 39.0,
-                "y": 20.0
+                "x": 43.0,
+                "y": 23.5
             }
         },
         {
             "id": "900000110001",
             "label": "S+U SchÃ¶nhauser Allee",
             "metadata": {
-                "x": 47.0,
-                "y": 20.0
+                "x": 53.5,
+                "y": 23.0
             }
         },
         {
             "id": "900000120001",
             "label": "S+U Frankfurter Allee",
             "metadata": {
-                "x": 53.0,
-                "y": 16.0
+                "x": 59.5,
+                "y": 20.0
             }
         },
         {
             "id": "900000078201",
             "label": "S+U NeukÃ¶lln",
             "metadata": {
-                "x": 48.0,
-                "y": 6.0
+                "x": 56.5,
+                "y": 7.0
             }
         },
         {
             "id": "900000079221",
             "label": "S+U Hermannstr.",
             "metadata": {
-                "x": 46.0,
+                "x": 54.5,
                 "y": 6.0
             }
         },
@@ -212,623 +212,623 @@
             "id": "900000068201",
             "label": "S+U Tempelhof",
             "metadata": {
-                "x": 43.0,
-                "y": 7.0
+                "x": 49.5,
+                "y": 6.0
             }
         },
         {
             "id": "900000160004",
             "label": "S+U Lichtenberg",
             "metadata": {
-                "x": 55.0,
-                "y": 16.0
+                "x": 61.5,
+                "y": 21.0
             }
         },
         {
             "id": "900000175001",
             "label": "S+U Wuhletal",
             "metadata": {
-                "x": 60.0,
-                "y": 16.0
+                "x": 66.5,
+                "y": 21.0
             }
         },
         {
             "id": "900000042101",
             "label": "U Spichernstr.",
             "metadata": {
-                "x": 36.0,
-                "y": 11.0
+                "x": 39.5,
+                "y": 15.0
             }
         },
         {
             "id": "900000023202",
             "label": "U Augsburger Str.",
             "metadata": {
-                "x": 37.0,
-                "y": 11.0
+                "x": 40.5,
+                "y": 15.0
             }
         },
         {
             "id": "900000056101",
             "label": "U Wittenbergplatz",
             "metadata": {
-                "x": 38.0,
-                "y": 11.0
+                "x": 41.5,
+                "y": 15.0
             }
         },
         {
             "id": "900000056102",
             "label": "U Nollendorfplatz",
             "metadata": {
-                "x": 39.0,
-                "y": 11.0
+                "x": 42.5,
+                "y": 14.0
             }
         },
         {
             "id": "900000005201",
             "label": "U KurfÃ¼rstenstr.",
             "metadata": {
-                "x": 40.0,
-                "y": 11.0
+                "x": 43.5,
+                "y": 14.0
             }
         },
         {
             "id": "900000017103",
             "label": "U Gleisdreieck",
             "metadata": {
-                "x": 41.0,
-                "y": 11.0
+                "x": 44.5,
+                "y": 14.0
             }
         },
         {
             "id": "900000017104",
             "label": "U MÃ¶ckernbrÃ¼cke",
             "metadata": {
-                "x": 42.0,
-                "y": 11.0
+                "x": 46.5,
+                "y": 12.0
             }
         },
         {
             "id": "900000012103",
             "label": "U Hallesches Tor",
             "metadata": {
-                "x": 43.0,
-                "y": 11.0
+                "x": 49.5,
+                "y": 12.0
             }
         },
         {
             "id": "900000013103",
             "label": "U Prinzenstr.",
             "metadata": {
-                "x": 44.0,
-                "y": 11.0
+                "x": 50.5,
+                "y": 12.0
             }
         },
         {
             "id": "900000013102",
             "label": "U Kottbusser Tor",
             "metadata": {
-                "x": 46.0,
-                "y": 11.0
+                "x": 53.5,
+                "y": 12.0
             }
         },
         {
             "id": "900000014101",
             "label": "U GÃ¶rlitzer Bahnhof",
             "metadata": {
-                "x": 47.0,
-                "y": 11.0
+                "x": 54.5,
+                "y": 12.0
             }
         },
         {
             "id": "900000014102",
             "label": "U Schlesisches Tor",
             "metadata": {
-                "x": 48.0,
-                "y": 11.0
+                "x": 55.5,
+                "y": 13.0
             }
         },
         {
             "id": "900000025202",
             "label": "U Ruhleben",
             "metadata": {
-                "x": 27.0,
-                "y": 18.0
+                "x": 28.0,
+                "y": 19.0
             }
         },
         {
             "id": "900000025203",
             "label": "U Olympia-Stadion",
             "metadata": {
-                "x": 28.0,
-                "y": 17.0
+                "x": 29.0,
+                "y": 18.0
             }
         },
         {
             "id": "900000026101",
             "label": "U Neu-Westend",
             "metadata": {
-                "x": 29.0,
-                "y": 16.0
+                "x": 30.0,
+                "y": 17.0
             }
         },
         {
             "id": "900000026201",
             "label": "Berlin, U Theodor-Heuss-Platz",
             "metadata": {
-                "x": 30.0,
-                "y": 15.0
+                "x": 31.0,
+                "y": 17.0
             }
         },
         {
             "id": "900000022101",
             "label": "U Sophie-Charlotte-Platz",
             "metadata": {
-                "x": 32.0,
-                "y": 14.0
+                "x": 33.0,
+                "y": 18.0
             }
         },
         {
             "id": "900000024201",
             "label": "U Bismarckstr.",
             "metadata": {
-                "x": 33.0,
-                "y": 14.0
+                "x": 34.0,
+                "y": 18.0
             }
         },
         {
             "id": "900000022201",
             "label": "U Deutsche Oper",
             "metadata": {
-                "x": 34.0,
-                "y": 14.0
+                "x": 35.0,
+                "y": 18.0
             }
         },
         {
             "id": "900000023101",
             "label": "U Ernst-Reuter-Platz",
             "metadata": {
-                "x": 35.0,
-                "y": 14.0
+                "x": 38.5,
+                "y": 18.0
             }
         },
         {
             "id": "900000056104",
             "label": "U BÃ¼lowstr.",
             "metadata": {
-                "x": 40.0,
-                "y": 10.0
+                "x": 43.5,
+                "y": 13.0
             }
         },
         {
             "id": "900000005252",
             "label": "U Mendelssohn-Bartholdy-Park",
             "metadata": {
-                "x": 41.0,
-                "y": 12.0
+                "x": 45.5,
+                "y": 15.0
             }
         },
         {
             "id": "900000100010",
             "label": "U Mohrenstr.",
             "metadata": {
-                "x": 42.0,
-                "y": 13.0
+                "x": 47.5,
+                "y": 17.0
             }
         },
         {
             "id": "900000100012",
             "label": "U Hausvogteiplatz",
             "metadata": {
-                "x": 44.0,
-                "y": 13.0
+                "x": 49.5,
+                "y": 16.0
             }
         },
         {
             "id": "900000100013",
             "label": "U Spittelmarkt",
             "metadata": {
-                "x": 45.0,
-                "y": 13.0
+                "x": 50.5,
+                "y": 16.0
             }
         },
         {
             "id": "900000100014",
             "label": "U MÃ¤rkisches Museum",
             "metadata": {
-                "x": 46.0,
-                "y": 13.0
+                "x": 51.5,
+                "y": 17.0
             }
         },
         {
             "id": "900000100015",
             "label": "U Klosterstr.",
             "metadata": {
-                "x": 47.0,
-                "y": 14.0
+                "x": 52.5,
+                "y": 18.0
             }
         },
         {
             "id": "900000100016",
             "label": "U Rosa-Luxemburg-Platz",
             "metadata": {
-                "x": 47.0,
-                "y": 17.0
+                "x": 53.5,
+                "y": 20.0
             }
         },
         {
             "id": "900000110005",
             "label": "U Senefelderplatz",
             "metadata": {
-                "x": 47.0,
-                "y": 18.0
+                "x": 53.5,
+                "y": 21.0
             }
         },
         {
             "id": "900000110006",
             "label": "U Eberswalder Str.",
             "metadata": {
-                "x": 47.0,
-                "y": 19.0
+                "x": 53.5,
+                "y": 22.0
             }
         },
         {
             "id": "900000130011",
             "label": "U Vinetastr.",
             "metadata": {
-                "x": 47.0,
-                "y": 21.0
+                "x": 53.5,
+                "y": 24.0
             }
         },
         {
             "id": "900000054101",
             "label": "U Rathaus SchÃ¶neberg",
             "metadata": {
-                "x": 37.0,
-                "y": 8.0
+                "x": 41.5,
+                "y": 11.0
             }
         },
         {
             "id": "900000055102",
             "label": "U Bayerischer Platz",
             "metadata": {
-                "x": 37.0,
-                "y": 9.0
+                "x": 41.5,
+                "y": 12.0
             }
         },
         {
             "id": "900000055101",
             "label": "U Viktoria-Luise-Platz",
             "metadata": {
-                "x": 38.0,
-                "y": 10.0
+                "x": 41.5,
+                "y": 13.0
             }
         },
         {
             "id": "900000100017",
             "label": "U Schillingstr.",
             "metadata": {
-                "x": 48.0,
-                "y": 16.0
+                "x": 54.5,
+                "y": 20.0
             }
         },
         {
             "id": "900000120006",
             "label": "U Strausberger Platz",
             "metadata": {
-                "x": 49.0,
-                "y": 16.0
+                "x": 55.5,
+                "y": 20.0
             }
         },
         {
             "id": "900000120025",
             "label": "U Weberwiese",
             "metadata": {
-                "x": 50.0,
-                "y": 16.0
+                "x": 56.5,
+                "y": 20.0
             }
         },
         {
             "id": "900000120008",
             "label": "U Frankfurter Tor",
             "metadata": {
-                "x": 51.0,
-                "y": 16.0
+                "x": 57.5,
+                "y": 20.0
             }
         },
         {
             "id": "900000120009",
             "label": "U Samariterstr.",
             "metadata": {
-                "x": 52.0,
-                "y": 16.0
+                "x": 58.5,
+                "y": 20.0
             }
         },
         {
             "id": "900000160005",
             "label": "U Magdalenenstr.",
             "metadata": {
-                "x": 54.0,
-                "y": 16.0
+                "x": 60.5,
+                "y": 21.0
             }
         },
         {
             "id": "900000161512",
             "label": "U Friedrichsfelde",
             "metadata": {
-                "x": 56.0,
-                "y": 15.0
+                "x": 62.5,
+                "y": 20.0
             }
         },
         {
             "id": "900000161002",
             "label": "U Tierpark",
             "metadata": {
-                "x": 57.0,
-                "y": 14.0
+                "x": 63.5,
+                "y": 19.0
             }
         },
         {
             "id": "900000171005",
             "label": "U Biesdorf-SÃ¼d",
             "metadata": {
-                "x": 58.0,
-                "y": 14.0
+                "x": 64.5,
+                "y": 19.0
             }
         },
         {
             "id": "900000171006",
             "label": "U Elsterwerdaer Platz",
             "metadata": {
-                "x": 59.0,
-                "y": 15.0
+                "x": 65.5,
+                "y": 20.0
             }
         },
         {
             "id": "900000175004",
             "label": "U Kaulsdorf-Nord",
             "metadata": {
-                "x": 61.0,
-                "y": 17.0
+                "x": 66.5,
+                "y": 22.0
             }
         },
         {
             "id": "900000175705",
             "label": "U Kienberg",
             "metadata": {
-                "x": 62.0,
-                "y": 18.0
+                "x": 66.5,
+                "y": 23.0
             }
         },
         {
             "id": "900000175006",
             "label": "U Cottbusser Platz",
             "metadata": {
-                "x": 63.0,
-                "y": 19.0
+                "x": 67.5,
+                "y": 24.0
             }
         },
         {
             "id": "900000175007",
             "label": "U Hellersdorf",
             "metadata": {
-                "x": 64.0,
-                "y": 19.0
+                "x": 68.5,
+                "y": 25.0
             }
         },
         {
             "id": "900000175015",
             "label": "U Louis-Lewin-Str.",
             "metadata": {
-                "x": 65.0,
-                "y": 19.0
+                "x": 69.5,
+                "y": 25.0
             }
         },
         {
             "id": "900000175010",
             "label": "U HÃ¶now",
             "metadata": {
-                "x": 66.0,
-                "y": 19.0
+                "x": 70.5,
+                "y": 26.0
             }
         },
         {
             "id": "900000070301",
             "label": "U Alt-Mariendorf",
             "metadata": {
-                "x": 43.0,
-                "y": 2.0
+                "x": 49.5,
+                "y": 1.0
             }
         },
         {
             "id": "900000070101",
             "label": "U Westphalweg",
             "metadata": {
-                "x": 43.0,
-                "y": 3.0
+                "x": 49.5,
+                "y": 2.0
             }
         },
         {
             "id": "900000069271",
             "label": "U Ullsteinstr.",
             "metadata": {
-                "x": 43.0,
-                "y": 4.0
+                "x": 49.5,
+                "y": 3.0
             }
         },
         {
             "id": "900000068302",
             "label": "U Kaiserin-Augusta-Str.",
             "metadata": {
-                "x": 43.0,
-                "y": 5.0
+                "x": 49.5,
+                "y": 4.0
             }
         },
         {
             "id": "900000068202",
             "label": "U Alt-Tempelhof",
             "metadata": {
-                "x": 43.0,
-                "y": 6.0
+                "x": 49.5,
+                "y": 5.0
             }
         },
         {
             "id": "900000068101",
             "label": "U Paradestr.",
             "metadata": {
-                "x": 43.0,
-                "y": 8.0
+                "x": 49.5,
+                "y": 7.0
             }
         },
         {
             "id": "900000017102",
             "label": "U Platz der LuftbrÃ¼cke",
             "metadata": {
-                "x": 43.0,
-                "y": 9.0
+                "x": 49.5,
+                "y": 8.0
             }
         },
         {
             "id": "900000017101",
             "label": "U Mehringdamm",
             "metadata": {
-                "x": 43.0,
-                "y": 10.0
+                "x": 49.5,
+                "y": 9.0
             }
         },
         {
             "id": "900000012102",
             "label": "U Kochstr./Checkpoint Charlie",
             "metadata": {
-                "x": 43.0,
-                "y": 12.0
+                "x": 49.5,
+                "y": 15.0
             }
         },
         {
             "id": "900000100011",
             "label": "U Stadtmitte",
             "metadata": {
-                "x": 43.0,
-                "y": 13.0
+                "x": 48.5,
+                "y": 16.0
             }
         },
         {
             "id": "900000100027",
             "label": "U FranzÃ¶sische Str.",
             "metadata": {
-                "x": 43.0,
-                "y": 14.0
+                "x": 48.5,
+                "y": 17.0
             }
         },
         {
             "id": "900000100019",
             "label": "U Oranienburger Tor",
             "metadata": {
-                "x": 43.0,
-                "y": 16.0
+                "x": 46.0,
+                "y": 20.5
             }
         },
         {
             "id": "900000100009",
             "label": "U Naturkundemuseum",
             "metadata": {
-                "x": 42.0,
-                "y": 17.0
+                "x": 46.0,
+                "y": 21.5
             }
         },
         {
             "id": "900000100501",
             "label": "U Schwartzkopffstr.",
             "metadata": {
-                "x": 41.0,
-                "y": 18.0
+                "x": 45.0,
+                "y": 21.5
             }
         },
         {
             "id": "900000008102",
             "label": "U Reinickendorfer Str.",
             "metadata": {
-                "x": 40.0,
-                "y": 19.0
+                "x": 44.0,
+                "y": 22.5
             }
         },
         {
             "id": "900000009102",
             "label": "U Leopoldplatz",
             "metadata": {
-                "x": 38.0,
-                "y": 21.0
+                "x": 42.0,
+                "y": 24.5
             }
         },
         {
             "id": "900000009103",
             "label": "U Seestr.",
             "metadata": {
-                "x": 37.0,
-                "y": 22.0
+                "x": 41.0,
+                "y": 25.5
             }
         },
         {
             "id": "900000011101",
             "label": "U Rehberge",
             "metadata": {
-                "x": 36.0,
-                "y": 23.0
+                "x": 40.0,
+                "y": 26.5
             }
         },
         {
             "id": "900000011102",
             "label": "U Afrikanische Str.",
             "metadata": {
-                "x": 35.0,
-                "y": 24.0
+                "x": 39.0,
+                "y": 27.5
             }
         },
         {
             "id": "900000086102",
             "label": "U Kurt-Schumacher-Platz",
             "metadata": {
-                "x": 34.0,
-                "y": 25.0
+                "x": 38.0,
+                "y": 28.5
             }
         },
         {
             "id": "900000087101",
             "label": "U Scharnweberstr.",
             "metadata": {
-                "x": 33.0,
-                "y": 26.0
+                "x": 37.0,
+                "y": 29.5
             }
         },
         {
             "id": "900000086101",
             "label": "U Otisstr.",
             "metadata": {
-                "x": 32.0,
-                "y": 27.0
+                "x": 36.0,
+                "y": 30.5
             }
         },
         {
             "id": "900000088201",
             "label": "U Holzhauser Str.",
             "metadata": {
-                "x": 31.0,
-                "y": 28.0
+                "x": 35.0,
+                "y": 31.5
             }
         },
         {
             "id": "900000088202",
             "label": "U Borsigwerke",
             "metadata": {
-                "x": 30.0,
-                "y": 29.0
+                "x": 35.0,
+                "y": 32.5
             }
         },
         {
             "id": "900000083201",
             "label": "U Rudow",
             "metadata": {
-                "x": 53.0,
+                "x": 62.5,
                 "y": 0.0
             }
         },
@@ -836,87 +836,87 @@
             "id": "900000083101",
             "label": "U Zwickauer Damm",
             "metadata": {
-                "x": 52.0,
-                "y": 0.0
+                "x": 61.5,
+                "y": 1.0
             }
         },
         {
             "id": "900000083102",
             "label": "U Wutzkyallee",
             "metadata": {
-                "x": 51.0,
-                "y": 0.0
+                "x": 60.5,
+                "y": 2.0
             }
         },
         {
             "id": "900000082201",
             "label": "U Lipschitzallee",
             "metadata": {
-                "x": 50.0,
-                "y": 0.0
+                "x": 59.5,
+                "y": 2.0
             }
         },
         {
             "id": "900000082202",
             "label": "U Johannisthaler Chaussee",
             "metadata": {
-                "x": 49.0,
-                "y": 1.0
+                "x": 58.5,
+                "y": 2.0
             }
         },
         {
             "id": "900000080402",
             "label": "U Britz-SÃ¼d",
             "metadata": {
-                "x": 48.0,
-                "y": 2.0
+                "x": 57.5,
+                "y": 3.0
             }
         },
         {
             "id": "900000080401",
             "label": "U Parchimer Allee",
             "metadata": {
-                "x": 48.0,
-                "y": 3.0
+                "x": 56.5,
+                "y": 4.0
             }
         },
         {
             "id": "900000080201",
             "label": "U Blaschkoallee",
             "metadata": {
-                "x": 48.0,
-                "y": 4.0
+                "x": 56.5,
+                "y": 5.0
             }
         },
         {
             "id": "900000080202",
             "label": "U Grenzallee",
             "metadata": {
-                "x": 48.0,
-                "y": 5.0
+                "x": 56.5,
+                "y": 6.0
             }
         },
         {
             "id": "900000078103",
             "label": "U Karl-Marx-Str.",
             "metadata": {
-                "x": 48.0,
-                "y": 7.0
+                "x": 55.5,
+                "y": 8.0
             }
         },
         {
             "id": "900000078102",
             "label": "U Rathaus NeukÃ¶lln",
             "metadata": {
-                "x": 47.0,
-                "y": 8.0
+                "x": 54.5,
+                "y": 9.0
             }
         },
         {
             "id": "900000078101",
             "label": "U Hermannplatz",
             "metadata": {
-                "x": 46.0,
+                "x": 53.5,
                 "y": 9.0
             }
         },
@@ -924,7 +924,7 @@
             "id": "900000016202",
             "label": "U SÃ¼dstern",
             "metadata": {
-                "x": 45.0,
+                "x": 52.5,
                 "y": 9.0
             }
         },
@@ -932,7 +932,7 @@
             "id": "900000016101",
             "label": "U Gneisenaustr.",
             "metadata": {
-                "x": 44.0,
+                "x": 50.5,
                 "y": 9.0
             }
         },
@@ -940,64 +940,64 @@
             "id": "900000054102",
             "label": "U Kleistpark",
             "metadata": {
-                "x": 39.0,
-                "y": 9.0
+                "x": 44.5,
+                "y": 12.0
             }
         },
         {
             "id": "900000054103",
             "label": "U Eisenacher Str.",
             "metadata": {
-                "x": 38.0,
-                "y": 9.0
+                "x": 43.5,
+                "y": 12.0
             }
         },
         {
             "id": "900000044201",
             "label": "U Berliner Str.",
             "metadata": {
-                "x": 36.0,
-                "y": 9.0
+                "x": 39.5,
+                "y": 12.0
             }
         },
         {
             "id": "900000041102",
             "label": "U Blissestr.",
             "metadata": {
-                "x": 35.0,
-                "y": 9.0
+                "x": 38.5,
+                "y": 12.0
             }
         },
         {
             "id": "900000041101",
             "label": "U Fehrbelliner Platz",
             "metadata": {
-                "x": 34.0,
-                "y": 10.0
+                "x": 37.0,
+                "y": 13.5
             }
         },
         {
             "id": "900000041201",
             "label": "U Konstanzer Str.",
             "metadata": {
-                "x": 33.0,
-                "y": 11.0
+                "x": 36.0,
+                "y": 14.5
             }
         },
         {
             "id": "900000023302",
             "label": "U Adenauerplatz",
             "metadata": {
-                "x": 33.0,
-                "y": 12.0
+                "x": 35.0,
+                "y": 15.5
             }
         },
         {
             "id": "900000022202",
             "label": "U Richard-Wagner-Platz",
             "metadata": {
-                "x": 33.0,
-                "y": 15.0
+                "x": 34.0,
+                "y": 19.0
             }
         },
         {
@@ -1005,7 +1005,7 @@
             "label": "U Mierendorffplatz",
             "metadata": {
                 "x": 33.0,
-                "y": 16.0
+                "y": 20.0
             }
         },
         {
@@ -1013,7 +1013,7 @@
             "label": "U Jakob-Kaiser-Platz",
             "metadata": {
                 "x": 31.0,
-                "y": 18.0
+                "y": 22.0
             }
         },
         {
@@ -1021,7 +1021,7 @@
             "label": "U Halemweg",
             "metadata": {
                 "x": 30.0,
-                "y": 18.0
+                "y": 23.0
             }
         },
         {
@@ -1029,7 +1029,7 @@
             "label": "U Siemensdamm",
             "metadata": {
                 "x": 29.0,
-                "y": 18.0
+                "y": 23.0
             }
         },
         {
@@ -1037,7 +1037,7 @@
             "label": "U Rohrdamm",
             "metadata": {
                 "x": 28.0,
-                "y": 18.0
+                "y": 23.0
             }
         },
         {
@@ -1045,7 +1045,7 @@
             "label": "U Paulsternstr.",
             "metadata": {
                 "x": 27.0,
-                "y": 18.0
+                "y": 23.0
             }
         },
         {
@@ -1053,7 +1053,7 @@
             "label": "U Haselhorst",
             "metadata": {
                 "x": 26.0,
-                "y": 18.0
+                "y": 23.0
             }
         },
         {
@@ -1061,7 +1061,7 @@
             "label": "U Zitadelle",
             "metadata": {
                 "x": 25.0,
-                "y": 18.0
+                "y": 23.0
             }
         },
         {
@@ -1069,14 +1069,14 @@
             "label": "U Altstadt Spandau",
             "metadata": {
                 "x": 24.0,
-                "y": 18.0
+                "y": 23.0
             }
         },
         {
             "id": "900000079201",
             "label": "U Leinestr.",
             "metadata": {
-                "x": 46.0,
+                "x": 54.5,
                 "y": 7.0
             }
         },
@@ -1084,7 +1084,7 @@
             "id": "900000079202",
             "label": "U Boddinstr.",
             "metadata": {
-                "x": 46.0,
+                "x": 54.5,
                 "y": 8.0
             }
         },
@@ -1092,264 +1092,264 @@
             "id": "900000016201",
             "label": "U SchÃ¶nleinstr.",
             "metadata": {
-                "x": 46.0,
-                "y": 10.0
+                "x": 53.5,
+                "y": 11.0
             }
         },
         {
             "id": "900000013101",
             "label": "U Moritzplatz",
             "metadata": {
-                "x": 46.0,
-                "y": 12.0
+                "x": 53.5,
+                "y": 16.0
             }
         },
         {
             "id": "900000100008",
             "label": "U Heinrich-Heine-Str.",
             "metadata": {
-                "x": 48.0,
-                "y": 14.0
+                "x": 53.5,
+                "y": 17.0
             }
         },
         {
             "id": "900000100051",
             "label": "U Weinmeisterstr.",
             "metadata": {
-                "x": 46.0,
-                "y": 17.0
+                "x": 52.5,
+                "y": 20.0
             }
         },
         {
             "id": "900000100023",
             "label": "U Rosenthaler Platz",
             "metadata": {
-                "x": 45.0,
-                "y": 18.0
+                "x": 51.5,
+                "y": 21.0
             }
         },
         {
             "id": "900000007110",
             "label": "U Bernauer Str.",
             "metadata": {
-                "x": 44.0,
-                "y": 19.0
+                "x": 50.500000000000455,
+                "y": 21.999999999999545
             }
         },
         {
             "id": "900000007103",
             "label": "U Voltastr.",
             "metadata": {
-                "x": 43.0,
-                "y": 20.0
+                "x": 48.0,
+                "y": 24.5
             }
         },
         {
             "id": "900000009203",
             "label": "U Pankstr.",
             "metadata": {
-                "x": 41.0,
-                "y": 22.0
+                "x": 46.0,
+                "y": 26.5
             }
         },
         {
             "id": "900000009202",
             "label": "U Osloer Str.",
             "metadata": {
-                "x": 40.0,
-                "y": 23.0
+                "x": 45.0,
+                "y": 27.5
             }
         },
         {
             "id": "900000085202",
             "label": "U Franz-Neumann-Platz",
             "metadata": {
-                "x": 39.0,
-                "y": 24.0
+                "x": 44.0,
+                "y": 28.5
             }
         },
         {
             "id": "900000085203",
             "label": "U Residenzstr.",
             "metadata": {
-                "x": 38.0,
-                "y": 25.0
+                "x": 43.0,
+                "y": 29.5
             }
         },
         {
             "id": "900000085104",
             "label": "U Paracelsus-Bad",
             "metadata": {
-                "x": 37.0,
-                "y": 26.0
+                "x": 42.0,
+                "y": 30.5
             }
         },
         {
             "id": "900000086160",
             "label": "U Lindauer Allee",
             "metadata": {
-                "x": 36.0,
-                "y": 27.0
+                "x": 41.0,
+                "y": 31.5
             }
         },
         {
             "id": "900000096410",
             "label": "U Rathaus Reinickendorf",
             "metadata": {
-                "x": 34.0,
-                "y": 29.0
+                "x": 39.0,
+                "y": 33.5
             }
         },
         {
             "id": "900000062203",
             "label": "U SchloÃŸstr.",
             "metadata": {
-                "x": 36.0,
-                "y": 5.0
+                "x": 38.5,
+                "y": 8.0
             }
         },
         {
             "id": "900000061101",
             "label": "U Walther-Schreiber-Platz",
             "metadata": {
-                "x": 36.0,
-                "y": 6.0
+                "x": 39.5,
+                "y": 9.0
             }
         },
         {
             "id": "900000061102",
             "label": "U Friedrich-Wilhelm-Platz",
             "metadata": {
-                "x": 36.0,
-                "y": 7.0
+                "x": 39.5,
+                "y": 10.0
             }
         },
         {
             "id": "900000043201",
             "label": "U GÃ¼ntzelstr.",
             "metadata": {
-                "x": 36.0,
-                "y": 10.0
+                "x": 39.5,
+                "y": 14.0
             }
         },
         {
             "id": "900000023203",
             "label": "U KurfÃ¼rstendamm",
             "metadata": {
-                "x": 36.0,
-                "y": 12.0
+                "x": 39.5,
+                "y": 16.0
             }
         },
         {
             "id": "900000003101",
             "label": "U Hansaplatz",
             "metadata": {
-                "x": 36.0,
-                "y": 14.0
+                "x": 39.5,
+                "y": 18.0
             }
         },
         {
             "id": "900000003104",
             "label": "U Turmstr.",
             "metadata": {
-                "x": 36.0,
-                "y": 15.0
+                "x": 39.5,
+                "y": 19.0
             }
         },
         {
             "id": "900000002201",
             "label": "U Birkenstr.",
             "metadata": {
-                "x": 36.0,
-                "y": 16.0
+                "x": 39.5,
+                "y": 20.0
             }
         },
         {
             "id": "900000009101",
             "label": "U Amrumer Str.",
             "metadata": {
-                "x": 37.0,
-                "y": 20.0
+                "x": 39.5,
+                "y": 22.0
             }
         },
         {
             "id": "900000009201",
             "label": "U Nauener Platz",
             "metadata": {
-                "x": 39.0,
-                "y": 22.0
+                "x": 43.0,
+                "y": 25.5
             }
         },
         {
             "id": "900000050201",
             "label": "U Krumme Lanke",
             "metadata": {
-                "x": 25.0,
-                "y": 3.0
+                "x": 30.0,
+                "y": 6.5
             }
         },
         {
             "id": "900000050282",
             "label": "U Onkel Toms HÃ¼tte",
             "metadata": {
-                "x": 26.0,
-                "y": 4.0
+                "x": 31.0,
+                "y": 6.5
             }
         },
         {
             "id": "900000051301",
             "label": "U Oskar-Helene-Heim",
             "metadata": {
-                "x": 27.0,
-                "y": 4.0
+                "x": 32.0,
+                "y": 6.5
             }
         },
         {
             "id": "900000051201",
             "label": "U Freie UniversitÃ¤t (Thielplatz)",
             "metadata": {
-                "x": 28.0,
-                "y": 4.0
+                "x": 33.0,
+                "y": 7.5
             }
         },
         {
             "id": "900000051303",
             "label": "U Dahlem-Dorf",
             "metadata": {
-                "x": 29.0,
-                "y": 5.0
+                "x": 34.0,
+                "y": 8.5
             }
         },
         {
             "id": "900000051302",
             "label": "U Podbielskiallee",
             "metadata": {
-                "x": 30.0,
-                "y": 6.0
+                "x": 35.0,
+                "y": 9.5
             }
         },
         {
             "id": "900000051202",
             "label": "U Breitenbachplatz",
             "metadata": {
-                "x": 31.0,
-                "y": 7.0
+                "x": 36.0,
+                "y": 10.5
             }
         },
         {
             "id": "900000045101",
             "label": "U RÃ¼desheimer Platz",
             "metadata": {
-                "x": 32.0,
-                "y": 8.0
+                "x": 37.0,
+                "y": 11.5
             }
         },
         {
             "id": "900000043101",
             "label": "U Hohenzollernplatz",
             "metadata": {
-                "x": 35.0,
-                "y": 11.0
+                "x": 38.5,
+                "y": 15.0
             }
         }
     ],
