@@ -81,9 +81,6 @@ hw3q4dii.py
 #cache files
 __pycache__
 
-#output files
-*.svg
-
 #jupyter notebooks
 prototypes/
 
