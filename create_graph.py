@@ -1,7 +1,6 @@
 import json
 import math
 from types import SimpleNamespace
-from copy import deepcopy
 
 class Node:
     def __init__(self, node_as_dict): 
