@@ -1,0 +1,47 @@
+Set parameter Username
+Academic license - for non-commercial use only - expires 2022-05-11
+Set parameter MIPGap to value 0.9
+Set parameter LazyConstraints to value 1
+Warning: linear constraint 2183 and linear constraint 2252 have the same name "pos_upper[0]"
+Gurobi Optimizer version 9.5.0 build v9.5.0rc5 (win64)
+Thread count: 6 physical cores, 12 logical processors, using up to 12 threads
+Optimize a model with 2597 rows, 19258 columns and 7673 nonzeros
+Model fingerprint: 0x8b902610
+Variable types: 411 continuous, 18847 integer (18709 binary)
+Coefficient statistics:
+  Matrix range     [5e-01, 3e+02]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 3e+02]
+Presolve removed 879 rows and 215 columns
+Presolve time: 0.02s
+Presolved: 1718 rows, 19043 columns, 5092 nonzeros
+Variable types: 404 continuous, 18639 integer (18572 binary)
+Found heuristic solution: objective 162.0000000
+
+Root relaxation: objective 1.016563e+00, 523 iterations, 0.01 seconds (0.00 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    1.01656    0  240  162.00000    1.01656  99.4%     -    0s
+     0     0   23.61716    0  312  162.00000   23.61716  85.4%     -    0s
+
+Cutting planes:
+  Learned: 30
+  Cover: 23
+  MIR: 100
+  Flow cover: 5
+  Zero half: 6
+  RLT: 46
+  Relax-and-lift: 11
+
+Explored 1 nodes (1096 simplex iterations) in 0.11 seconds (0.08 work units)
+Thread count was 12 (of 12 available processors)
+
+Solution count 1: 162
+
+Optimal solution found (tolerance 9.00e-01)
+Best objective 1.620000000000e+02, best bound 2.361716222009e+01, gap 85.4215%
+
+User-callback calls 395, time in user-callback 0.01 sec
